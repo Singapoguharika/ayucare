@@ -1,0 +1,784 @@
+ <html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>
+   AyuCare Hospital Management System
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+   rel="stylesheet"
+  />
+  <style>
+   body {
+    font-family: "Crimson Text", serif;
+    background-color: #f7f9fb;
+   }
+   nav {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+  }
+   /* Animation for slide-in from left */
+   @keyframes slideInLeft {
+    0% {
+     opacity: 0;
+     transform: translateX(-50px);
+    }
+    100% {
+     opacity: 1;
+     transform: translateX(0);
+    }
+   }
+   .slide-in-left {
+    animation: slideInLeft 1s ease forwards;
+   }
+   /* Animation for slide-in from right */
+   @keyframes slideInRight {
+    0% {
+     opacity: 0;
+     transform: translateX(50px);
+    }
+    100% {
+     opacity: 1;
+     transform: translateX(0);
+    }
+   }
+   .slide-in-right {
+    animation: slideInRight 1s ease forwards;
+   }
+  </style>
+ </head>
+ <body class="bg-[#f7f9fb]">
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+   <div
+    class="max-w-[1280px] mx-auto flex items-center justify-between h-20 px-4 sm:px-6 md:px-8"
+   >
+    <div
+     class="w-[180px] md:w-[250px] h-16 md:h-20 rounded-md flex items-center justify-center flex-shrink-0 select-none"
+    >
+     <img
+      alt="AyuCare Hospital Management System logo with white text on blue background, rectangular shape"
+      class="object-contain h-12 md:h-16"
+      height="60"
+      src="images/logoayucare.png"
+      width="200"
+     />
+    </div>
+    <ul
+     class="hidden md:flex items-center gap-8 text-[20px] text-[#00629e] font-medium select-none relative"
+     id="navLinks"
+    >
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="index">Home</a>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="aboutus">About</a>
+     </li>
+     <li class="relative" id="modulesMenu">
+      <button
+       aria-expanded="false"
+       aria-haspopup="true"
+       class="flex items-center gap-1 focus:outline-none text-[#00629e] hover:text-[#1f97dc] transition font-medium"
+       id="desktopDropdownBtn"
+       type="button"
+      >
+       Services
+       <i class="fas fa-angle-down"></i>
+      </button>
+      <ul
+       aria-label="submenu"
+       class="absolute top-full left-0 mt-1 bg-[#f7f9fb] shadow-lg rounded-md min-w-[220px] max-w-[350px] whitespace-nowrap hidden z-50"
+       id="modulesDropdown"
+      >
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="out-patient-management"
+         >Out-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="In-patient-management"
+         >In-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="clinicalmanagement"
+         >Clinical Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="pharmacy"
+         >Pharmacy</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="OT-management"
+         >OT Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="digitalrecord"
+         >Digital Records</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="laboratory"
+         >Laboratory</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="radiology"
+         >Radiology</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="revenue-analysis"
+         >Revenue Analysis</a
+        >
+       </li>
+      </ul>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="HMSportal">HMSPortal-App</a>
+     </li>
+   
+      <a class="hover:text-[#1f97dc] transition" href="blog">Blogs</a>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="testimonals">Testimonials</a>
+     </li>
+     <li>
+      <button
+       onclick="location.href='contactus'"
+       class="bg-[#00629e] hover:bg-[#004a75] text-white px-4 py-2 rounded transition font-medium"
+       type="button"
+      >
+       Contact Us
+      </button>
+     </li>
+    </ul>
+    <button
+     aria-label="Toggle menu"
+     class="md:hidden text-[#0b5fa5] text-3xl focus:outline-none"
+     id="hamburgerIcon"
+     type="button"
+    >
+     <i class="fas fa-bars"></i>
+    </button>
+   </div>
+   <!-- Mobile menu -->
+   <div
+    class="hidden bg-[#00629e] text-white w-full px-6 pb-6"
+    id="mobileMenu"
+   >
+    <ul class="flex flex-col gap-4 text-lg select-none">
+     <li>
+      <a class="block w-full" href="index" tabindex="0">Home</a>
+     </li>
+     <li>
+      <a class="block w-full" href="aboutus" tabindex="0">About</a>
+     </li>
+     <li>
+      <button
+       aria-controls="mobileModulesSubmenu"
+       aria-expanded="false"
+       class="flex justify-between items-center w-full font-medium"
+       id="mobileModulesBtn"
+       type="button"
+      >
+       Services
+       <i class="fas fa-angle-down"></i>
+      </button>
+      <ul
+       class="hidden flex flex-col bg-white text-black rounded-md mt-2 overflow-hidden"
+       id="mobileModulesSubmenu"
+      >
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="out-patient-management"
+         tabindex="0"
+         >Out-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="In-patient-management"
+         tabindex="0"
+         >In-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="clinicalmanagement"
+         tabindex="0"
+         >Clinical Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="pharmacy"
+         tabindex="0"
+         >Pharmacy</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="OT-management"
+         tabindex="0"
+         >OT Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="digitalrecord"
+         tabindex="0"
+         >Digital Records</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="laboratory"
+         tabindex="0"
+         >Laboratory</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="radiology"
+         tabindex="0"
+         >Radiology</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="revenue-analysis"
+         tabindex="0"
+         >Revenue Analysis</a
+        >
+       </li>
+      </ul>
+     </li>
+     <li>
+      <a class="block w-full" href="HMSportal" tabindex="0">HMSPortal-App</a>
+     </li>
+    
+     <li>
+      <a class="block w-full" href="blog" tabindex="0">Blogs</a>
+     </li>
+     <li>
+      <a class="block w-full" href="testimonals" tabindex="0">Testimonials</a>
+     </li>
+     <li>
+      <a
+       class="block w-full bg-white text-[#00629e] text-center rounded px-4 py-2 font-medium hover:bg-gray-200 transition"
+       href="contactus"
+       tabindex="0"
+       >Contact Us</a
+      >
+     </li>
+    </ul>
+   </div>
+  </nav>
+  <script>
+   const hamburgerIcon = document.getElementById("hamburgerIcon");
+   const mobileMenu = document.getElementById("mobileMenu");
+   const mobileModulesBtn = document.getElementById("mobileModulesBtn");
+   const mobileModulesSubmenu = document.getElementById("mobileModulesSubmenu");
+   const mobileLinks = mobileMenu.querySelectorAll("a");
+
+   hamburgerIcon.addEventListener("click", () => {
+    const icon = hamburgerIcon.querySelector("i");
+    mobileMenu.classList.toggle("hidden");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+   });
+
+   mobileModulesBtn.addEventListener("click", () => {
+    const expanded = mobileModulesBtn.getAttribute("aria-expanded") === "true";
+    mobileModulesBtn.setAttribute("aria-expanded", !expanded);
+    mobileModulesSubmenu.classList.toggle("hidden");
+    mobileModulesBtn.querySelector("i").classList.toggle("fa-angle-down");
+    mobileModulesBtn.querySelector("i").classList.toggle("fa-angle-up");
+   });
+
+   // Close mobile menu when clicking a link and allow navigation
+   mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+     // Close menu and submenu
+     mobileMenu.classList.add("hidden");
+     const icon = hamburgerIcon.querySelector("i");
+     icon.classList.remove("fa-xmark");
+     icon.classList.add("fa-bars");
+     if (!mobileModulesSubmenu.classList.contains("hidden")) {
+      mobileModulesSubmenu.classList.add("hidden");
+      mobileModulesBtn.setAttribute("aria-expanded", false);
+      mobileModulesBtn.querySelector("i").classList.remove("fa-angle-up");
+      mobileModulesBtn.querySelector("i").classList.add("fa-angle-down");
+     }
+     // Navigation will proceed naturally
+    });
+   });
+
+   // Desktop Modules dropdown toggle on click
+   const desktopDropdownBtn = document.getElementById("desktopDropdownBtn");
+   const modulesDropdown = document.getElementById("modulesDropdown");
+
+   desktopDropdownBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const isHidden = modulesDropdown.classList.contains("hidden");
+    if (isHidden) {
+     modulesDropdown.classList.remove("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "true");
+    } else {
+     modulesDropdown.classList.add("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "false");
+    }
+   });
+
+   // Close dropdown if clicking outside
+   document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (
+     !desktopDropdownBtn.contains(target) &&
+     !modulesDropdown.contains(target)
+    ) {
+     modulesDropdown.classList.add("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "false");
+    }
+   });
+  </script>
+<!--nav end-->
+   <style>
+        .card {
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-color: #00629e33; */
+            z-index: 0;
+            transition: top 0.4s ease;
+        }
+
+        .card.clicked h2 {
+            color: white !important;
+        }
+
+        .card.clicked p {
+            color: #333;
+        }
+
+
+        .card:hover::before {
+            top: 0;
+        }
+
+        .card:hover .icon {
+            transform: scale(1.2);
+        }
+
+        .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .card.clicked {
+            /* background-color: #00629e33; */
+            background: rgb(221, 129, 45);
+        }
+    </style>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<!--nav end here-->
+
+
+ <body class="bg-[#e6f0f4] font-sans text-[#005a6e]">
+  <!-- Top Section -->
+  <section class="flex flex-col md:flex-row items-center md:items-start bg-[#e6f0f4] px-6 md:px-20 py-12 md:py-20">
+   <div class="md:w-1/2 mb-10 md:mb-0 z-10 relative bg-[#e6f0f4] p-6 rounded-md max-w-lg">
+    <h2 class="font-semibold text-[#005a6e] text-2xl md:text-3xl leading-tight">
+     Everything At a Glance With One Glance Mobile App
+    </h2>
+    <p class="text-base md:text-lg text-[#005a6e] mt-4">
+     Enables patients to connect with their doctors to get timely advice
+    </p>
+    <button class="mt-8 bg-[#e94b0a] text-white text-base md:text-lg font-semibold px-6 py-3 rounded-sm hover:bg-[#cc3f08] transition-colors">
+     ENQUIRE NOW
+    </button>
+   </div>
+   <div class="md:w-1/2 flex justify-center md:justify-end -ml-10 md:ml-0">
+    <img alt="Mobile phone showing sign in screen of One Glance app with username and password fields and login button" class="w-44 md:w-56 object-contain" height="360" src="https://storage.googleapis.com/a1aa/image/c16b9339-b1d5-4e7f-1a5f-d64d05640497.jpg" width="190"/>
+    <img alt="Mobile phone showing record sugar values screen of One Glance app with input fields and save button" class="w-44 md:w-56 object-contain -ml-6 md:-ml-10" height="360" src="https://storage.googleapis.com/a1aa/image/6fb42fb4-5ab2-473c-529b-184cdd916e2e.jpg" width="190"/>
+   </div>
+  </section>
+  <!-- Middle Section -->
+  <section class="px-6 md:px-20 py-12 md:py-20 bg-white">
+   <h3 class="text-center font-semibold text-[#005a6e] text-lg md:text-xl mb-3">
+    A Must Have Innovative Tool For Modern Practices
+   </h3>
+   <p class="text-center text-base md:text-lg text-[#005a6e] max-w-4xl mx-auto mb-12">
+    Schedule appointments, store &amp; access medical data, connect with your doctor and do a lot more with the Ayucare mobile app
+   </p>
+   <div class="flex flex-col md:flex-row md:space-x-12 items-center justify-center">
+    <div class="flex flex-col space-y-4 md:w-1/2">
+     <button class="flex items-center space-x-4 bg-[#e94b0a] text-white text-base md:text-lg font-semibold px-5 py-4 rounded-sm w-full">
+      <i class="fas fa-comment-alt text-base md:text-lg">
+      </i>
+      <span>
+       Connect with your Doctor over Chat
+      </span>
+     </button>
+     <button class="flex items-center space-x-4 bg-[#006a75] text-white text-base md:text-lg font-semibold px-5 py-4 rounded-sm w-full">
+      <i class="far fa-check-circle text-base md:text-lg">
+      </i>
+      <span>
+       Easy Recording Of SMBG Values
+      </span>
+     </button>
+     <button class="flex items-center space-x-4 bg-[#006a75] text-white text-base md:text-lg font-semibold px-5 py-4 rounded-sm w-full">
+      <i class="far fa-check-circle text-base md:text-lg">
+      </i>
+      <span>
+       Connect virtually with your doctor
+      </span>
+     </button>
+     <button class="flex items-center space-x-4 bg-[#006a75] text-white text-base md:text-lg font-semibold px-5 py-4 rounded-sm w-full">
+      <i class="far fa-check-circle text-base md:text-lg">
+      </i>
+      <span>
+       Online Payment For Patient
+      </span>
+     </button>
+     <button class="flex items-center space-x-4 bg-[#006a75] text-white text-base md:text-lg font-semibold px-5 py-4 rounded-sm w-full">
+      <i class="far fa-check-circle text-base md:text-lg">
+      </i>
+      <span>
+       Appointment Booking For Patient
+      </span>
+     </button>
+     <button class="flex items-center space-x-4 bg-[#006a75] text-white text-base md:text-lg font-semibold px-5 py-4 rounded-sm w-full">
+      <i class="far fa-check-circle text-base md:text-lg">
+      </i>
+      <span>
+       Medical Records Access
+      </span>
+     </button>
+    </div>
+    <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+     <img alt="Mobile phone showing chat screen of One Glance app with a lab test report and message input box" class="w-64 md:w-80 object-contain" height="480" src="https://storage.googleapis.com/a1aa/image/9d965234-b827-487d-7753-4604897fa759.jpg" width="320"/>
+    </div>
+   </div>
+  </section>
+  <!-- Bottom Section -->
+  <section class="px-6 md:px-20 py-12 md:py-20 bg-white">
+   <h3 class="text-center font-semibold text-[#005a6e] text-lg md:text-xl mb-12">
+    Our Engaging Solutions for Doctors
+   </h3>
+   <div class="flex flex-wrap justify-center gap-8">
+    <div class="flex flex-col items-center w-24 md:w-32 text-center">
+     <img alt="Mobile phone showing publish medical articles screen of One Glance app with watermelon image" class="w-20 md:w-28 object-contain mb-3" height="160" src="https://storage.googleapis.com/a1aa/image/ff44e486-a0c4-4dd6-8f99-992b6d6bdce6.jpg" width="80"/>
+     <span class="text-xs md:text-sm font-semibold text-[#005a6e]">
+      Publish Medical Articles
+     </span>
+    </div>
+    <div class="flex flex-col items-center w-24 md:w-32 text-center">
+     <img alt="Mobile phone showing date-wise EMR entries screen of One Glance app with list of medical data" class="w-20 md:w-28 object-contain mb-3" height="160" src="https://storage.googleapis.com/a1aa/image/48ce377b-beae-4711-6fd8-bd388edfd9a6.jpg" width="80"/>
+     <span class="text-xs md:text-sm font-semibold text-[#005a6e]">
+      View Date-wise EMR Entries
+     </span>
+    </div>
+    <div class="flex flex-col items-center w-24 md:w-32 text-center">
+     <img alt="Mobile phone showing track and review SMBG values screen of One Glance app with graph and data" class="w-20 md:w-28 object-contain mb-3" height="160" src="https://storage.googleapis.com/a1aa/image/32850ece-79cd-4aed-b95b-99c684d2c39f.jpg" width="80"/>
+     <span class="text-xs md:text-sm font-semibold text-[#005a6e]">
+      Track &amp; Review SMBG Values
+     </span>
+    </div>
+    <div class="flex flex-col items-center w-24 md:w-32 text-center">
+     <img alt="Mobile phone showing audit their practice screen of One Glance app with table of data" class="w-20 md:w-28 object-contain mb-3" height="160" src="https://storage.googleapis.com/a1aa/image/e8b2ed26-0cf6-4a4f-e80e-5e86feb5b0fa.jpg" width="80"/>
+     <span class="text-xs md:text-sm font-semibold text-[#005a6e]">
+      Audit their Practice
+     </span>
+    </div>
+    <div class="flex flex-col items-center w-24 md:w-32 text-center">
+     <img alt="Mobile phone showing chat screen of One Glance app with patient messages" class="w-20 md:w-28 object-contain mb-3" height="160" src="https://storage.googleapis.com/a1aa/image/969c7822-2790-447a-ed2c-e58c79cc13d1.jpg" width="80"/>
+     <span class="text-xs md:text-sm font-semibold text-[#005a6e]">
+      Easily connect with patients over chat
+     </span>
+    </div>
+   </div>
+  </section>
+  <html lang="en">
+
+  <section class="bg-[#005a6e] text-white px-6 md:px-20 py-12">
+   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <!-- Logo & Description -->
+    <div>
+     <img alt="Company logo" class="w-32 mb-4" height="50" src="https://storage.googleapis.com/a1aa/image/b609e8e1-ea60-4dd7-6465-9380c5430863.jpg" width="150"/>
+     <p class="text-sm md:text-base max-w-xs">
+      One Glance Mobile App - Connecting patients and doctors seamlessly for timely advice and care.
+     </p>
+    </div>
+    <!-- Useful Links -->
+    <div>
+     <h4 class="font-semibold text-lg mb-4 border-b border-white pb-2">
+      Useful Links
+     </h4>
+     <ul class="space-y-2 text-sm md:text-base">
+      <li>
+       <a class="hover:underline" href="#">
+        Home
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        About Us
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        Services
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        Contact
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        Blog
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- Contact Info -->
+    <div>
+     <h4 class="font-semibold text-lg mb-4 border-b border-white pb-2">
+      Contact Us
+     </h4>
+     <ul class="space-y-3 text-sm md:text-base">
+      <li>
+       <i class="fas fa-map-marker-alt mr-2">
+       </i>
+       1234 Health St, Wellness City, Country
+      </li>
+      <li>
+       <i class="fas fa-phone mr-2">
+       </i>
+       +1 (234) 567-8901
+      </li>
+      <li>
+       <i class="fas fa-envelope mr-2">
+       </i>
+       support@Ayucareapp.com
+      </li>
+     </ul>
+    </div>
+    <!-- Social Media -->
+    <div>
+     <h4 class="font-semibold text-lg mb-4 border-b border-white pb-2">
+      Follow Us
+     </h4>
+     <div class="flex space-x-4 text-xl">
+      <a aria-label="Facebook" class="hover:text-[#e94b0a]" href="#">
+       <i class="fab fa-facebook-f">
+       </i>
+      </a>
+      <a aria-label="Twitter" class="hover:text-[#e94b0a]" href="#">
+       <i class="fab fa-twitter">
+       </i>
+      </a>
+      <a aria-label="Instagram" class="hover:text-[#e94b0a]" href="#">
+       <i class="fab fa-instagram">
+       </i>
+      </a>
+      <a aria-label="LinkedIn" class="hover:text-[#e94b0a]" href="#">
+       <i class="fab fa-linkedin-in">
+       </i>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="mt-10 border-t border-white pt-6 text-center text-xs md:text-sm text-white/80">
+    © 2024 One Glance Mobile App. Designed &amp; Developed by
+    <a class="text-[#e94b0a] hover:underline" href="https://prodbizsolutions.com" rel="noopener noreferrer" target="_blank">
+     Prodbizsolutions.com
+    </a>
+   </div>
+  </section>
+
+
+  <footer class="bg-gray-900 text-gray-300 mt-20 footer-bg relative">
+      <img
+  src="images/close-up-nurse-holding-typing-tablet-standing-stomatologic-clinic-while-doctor-is-working-with-patient-background-using-monitor-with-chroma-key-izolated-pc-key-mockup-pc-display.jpg"
+  alt="Abstract healthcare technology background"
+  class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none"
+/>
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 footer-content grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="flex flex-col space-y-6">
+          <img
+            alt="Ayucare company logo rectangle with teal text on dark background"
+            class="w-[220px] h-[80px] object-contain"
+            height="80"
+            src="images/logoayucare.png"
+            width="220"
+          />
+          <p class="text-gray-300 max-w-xs leading-relaxed text-lg">
+            Ayucare is dedicated to providing innovative healthcare software and
+            mobile solutions to improve patient care and hospital management.
+          </p>
+        </div>
+        <div>
+          <h5 class="text-white font-semibold text-xl mb-6">Useful Links</h5>
+          <ul class="space-y-4 text-gray-400 text-lg">
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="index"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="aboutus"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="out-patient-management"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="contactus"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-white font-semibold text-xl mb-6">Contact Us</h5>
+          <ul class="space-y-6 text-gray-400 text-lg">
+            <li class="flex items-start space-x-4">
+              <i class="fas fa-map-marker-alt mt-1 text-teal-400 text-2xl"></i>
+              <span>
+                123 Health Street,<br />
+                Wellness City, 456789,<br />
+                India
+              </span>
+            </li>
+            <li class="flex items-center space-x-4">
+              <i class="fas fa-phone-alt text-teal-400 text-2xl"></i>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="tel:+911234567890"
+                >+91 12345 67890</a
+              >
+            </li>
+            <li class="flex items-center space-x-4">
+              <i class="fas fa-envelope text-teal-400 text-2xl"></i>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="mailto:info@ayucare.com"
+                >info@ayucare.com</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-white font-semibold text-xl mb-6">Follow Us</h5>
+          <div class="flex space-x-8 text-gray-400 text-3xl">
+            <a
+              aria-label="Facebook"
+              class="hover:text-teal-400 transition-colors duration-200"
+              href="#"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              aria-label="Twitter"
+              class="hover:text-teal-400 transition-colors duration-200"
+              href="#"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              aria-label="Instagram"
+              class="hover:text-teal-400 transition-colors duration-200"
+              href="#"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              aria-label="LinkedIn"
+              class="hover:text-teal-400 transition-colors duration-200"
+              href="#"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+          <p class="mt-12 text-gray-400 text-lg max-w-xs leading-relaxed">
+            © 2024 Ayucare. All rights reserved.
+          </p>
+          <p class="mt-2 text-gray-400 text-lg max-w-xs leading-relaxed">
+            Designed and developed by
+            <a
+              class="text-teal-400 hover:underline"
+              href="https://prodbizsolutions.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Prodbizsolutions.com</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+ </body>
+</html>

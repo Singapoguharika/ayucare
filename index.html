@@ -1,0 +1,1751 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>
+   AyuCare Hospital Management System
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+   rel="stylesheet"
+  />
+  <style>
+   body {
+    font-family: "Crimson Text", serif;
+    background-color: #f7f9fb;
+   }
+   nav {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+  }
+   /* Animation for slide-in from left */
+   @keyframes slideInLeft {
+    0% {
+     opacity: 0;
+     transform: translateX(-50px);
+    }
+    100% {
+     opacity: 1;
+     transform: translateX(0);
+    }
+   }
+   .slide-in-left {
+    animation: slideInLeft 1s ease forwards;
+   }
+   /* Animation for slide-in from right */
+   @keyframes slideInRight {
+    0% {
+     opacity: 0;
+     transform: translateX(50px);
+    }
+    100% {
+     opacity: 1;
+     transform: translateX(0);
+    }
+   }
+   .slide-in-right {
+    animation: slideInRight 1s ease forwards;
+   }
+  </style>
+ </head>
+ <body class="bg-[#f7f9fb]">
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+   <div
+    class="max-w-[1280px] mx-auto flex items-center justify-between h-20 px-4 sm:px-6 md:px-8"
+   >
+    <div
+     class="w-[180px] md:w-[250px] h-16 md:h-20 rounded-md flex items-center justify-center flex-shrink-0 select-none"
+    >
+     <img
+      alt="AyuCare Hospital Management System logo with white text on blue background, rectangular shape"
+      class="object-contain h-12 md:h-16"
+      height="60"
+      src="images/logoayucare.png"
+      width="200"
+     />
+    </div>
+    <ul
+     class="hidden md:flex items-center gap-8 text-[20px] text-[#00629e] font-medium select-none relative"
+     id="navLinks"
+    >
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="index">Home</a>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="aboutus">About</a>
+     </li>
+     <li class="relative" id="modulesMenu">
+      <button
+       aria-expanded="false"
+       aria-haspopup="true"
+       class="flex items-center gap-1 focus:outline-none text-[#00629e] hover:text-[#1f97dc] transition font-medium"
+       id="desktopDropdownBtn"
+       type="button"
+      >
+       Services
+       <i class="fas fa-angle-down"></i>
+      </button>
+      <ul
+       aria-label="submenu"
+       class="absolute top-full left-0 mt-1 bg-[#f7f9fb] shadow-lg rounded-md min-w-[220px] max-w-[350px] whitespace-nowrap hidden z-50"
+       id="modulesDropdown"
+      >
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="out-patient-management
+         "
+         >Out-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="In-Patient-Management
+         "
+         >In-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="clinicalmanagement"
+         >Clinical Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="pharmacy"
+         >Pharmacy</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="OT-management"
+         >OT Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="digital-records"
+         >Digital Records</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="laboratory"
+         >Laboratory</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="radiology"
+         >Radiology</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="revenue-analysis"
+         >Revenue Analysis</a
+        >
+       </li>
+      </ul>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="HMSportal">HMSPortal App</a>
+     </li>
+   
+      <a class="hover:text-[#1f97dc] transition" href="laboratory">Blogs</a>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="testimonals
+      ">Testimonials</a>
+     </li>
+     <li>
+      <button
+       onclick="location.href='#contact'"
+       class="bg-[#00629e] hover:bg-[#004a75] text-white px-4 py-2 rounded transition font-medium"
+       type="button"
+      >
+       Contact Us
+      </button>
+     </li>
+    </ul>
+    <button
+     aria-label="Toggle menu"
+     class="md:hidden text-[#0b5fa5] text-3xl focus:outline-none"
+     id="hamburgerIcon"
+     type="button"
+    >
+     <i class="fas fa-bars"></i>
+    </button>
+   </div>
+   <!-- Mobile menu -->
+   <div
+    class="hidden bg-[#00629e] text-white w-full px-6 pb-6"
+    id="mobileMenu"
+   >
+    <ul class="flex flex-col gap-4 text-lg select-none">
+     <li>
+      <a class="block w-full" href="index" tabindex="0">Home</a>
+     </li>
+     <li>
+      <a class="block w-full" href="aboutus" tabindex="0">About</a>
+     </li>
+     <li>
+      <button
+       aria-controls="mobileModulesSubmenu"
+       aria-expanded="false"
+       class="flex justify-between items-center w-full font-medium"
+       id="mobileModulesBtn"
+       type="button"
+      >
+       Services
+       <i class="fas fa-angle-down"></i>
+      </button>
+      <ul
+       class="hidden flex flex-col bg-white text-black rounded-md mt-2 overflow-hidden"
+       id="mobileModulesSubmenu"
+      >
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="out-patient-management"
+         tabindex="0"
+         >Out-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="In-patient-management"
+         tabindex="0"
+         >In-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="#"
+         tabindex="0"
+         >Clinical Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="#"
+         tabindex="0"
+         >Pharmacy</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="#"
+         tabindex="0"
+         >OT Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="#"
+         tabindex="0"
+         >Digital Records</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="#"
+         tabindex="0"
+         >Laboratory</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="#"
+         tabindex="0"
+         >Radiology</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="#"
+         tabindex="0"
+         >Revenue Analysis</a
+        >
+       </li>
+      </ul>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="HMSportal">HMSPortal-App</a>
+     </li>
+     <!--      <li>
+      <a class="block w-full" href="#" tabindex="0">Dashboard</a>
+     </li>
+     <li> --> 
+      <a class="block w-full" href="blog" tabindex="0">Blogs</a>
+     </li>
+     <li>
+      <a class="block w-full" href="#" tabindex="0">Testimonials</a>
+     </li>
+     <li>
+      <a
+       class="block w-full bg-white text-[#00629e] text-center rounded px-4 py-2 font-medium hover:bg-gray-200 transition"
+       href=""
+       tabindex="0"
+       >Contact Us</a
+      >
+     </li>
+    </ul>
+   </div>
+  </nav>
+  <!-- Banner Section -->
+  <section class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 mt-10">
+   <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+    <!-- Text side -->
+    <div class="md:w-1/2 slide-in-left">
+      <br>
+      <br>
+      <br>
+     <h1 class="text-4xl md:text-5xl font-semibold text-[#00629e] mb-6">
+      Welcome to AyuCare Hospital Management System
+     </h1>
+     <p class="text-lg text-gray-700 mb-8">
+      Efficiently manage your hospital operations with our comprehensive modules and user-friendly interface.
+     </p>
+    </div>
+    <!-- Book Form side -->
+    <div class="md:w-1/2 slide-in-right w-full max-w-md">
+     <form
+      action="#"
+      class="bg-white p-6 rounded-lg shadow-md"
+      method="POST"
+     >
+      <h2 class="text-2xl font-semibold text-[#00629e] mb-4">
+       Book an Appointment
+      </h2>
+      <div class="mb-4">
+       <label class="block text-gray-700 mb-1" for="name">Full Name</label>
+       <input
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00629e]"
+        id="name"
+        name="name"
+        placeholder="Your full name"
+        required=""
+        type="text"
+       />
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700 mb-1" for="email">Email Address</label>
+       <input
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00629e]"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        required=""
+        type="email"
+       />
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700 mb-1" for="date">Preferred Date</label>
+       <input
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00629e]"
+        id="date"
+        name="date"
+        required=""
+        type="date"
+       />
+      </div>
+      <button
+       class="bg-[#00629e] text-white px-6 py-2 rounded hover:bg-[#004a75] transition"
+       type="submit"
+      >
+       Book Now
+      </button>
+     </form>
+    </div>
+   </div>
+  </section>
+
+  <script>
+   const hamburgerIcon = document.getElementById("hamburgerIcon");
+   const mobileMenu = document.getElementById("mobileMenu");
+   const mobileModulesBtn = document.getElementById("mobileModulesBtn");
+   const mobileModulesSubmenu = document.getElementById("mobileModulesSubmenu");
+   const mobileLinks = mobileMenu.querySelectorAll("a");
+
+   hamburgerIcon.addEventListener("click", () => {
+    const icon = hamburgerIcon.querySelector("i");
+    mobileMenu.classList.toggle("hidden");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+   });
+
+   mobileModulesBtn.addEventListener("click", () => {
+    const expanded = mobileModulesBtn.getAttribute("aria-expanded") === "true";
+    mobileModulesBtn.setAttribute("aria-expanded", !expanded);
+    mobileModulesSubmenu.classList.toggle("hidden");
+    mobileModulesBtn.querySelector("i").classList.toggle("fa-angle-down");
+    mobileModulesBtn.querySelector("i").classList.toggle("fa-angle-up");
+   });
+
+   // Close mobile menu when clicking a link and allow navigation
+   mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+     // Close menu and submenu
+     mobileMenu.classList.add("hidden");
+     const icon = hamburgerIcon.querySelector("i");
+     icon.classList.remove("fa-xmark");
+     icon.classList.add("fa-bars");
+     if (!mobileModulesSubmenu.classList.contains("hidden")) {
+      mobileModulesSubmenu.classList.add("hidden");
+      mobileModulesBtn.setAttribute("aria-expanded", false);
+      mobileModulesBtn.querySelector("i").classList.remove("fa-angle-up");
+      mobileModulesBtn.querySelector("i").classList.add("fa-angle-down");
+     }
+     // Navigation will proceed naturally
+    });
+   });
+
+   // Desktop Modules dropdown toggle on click
+   const desktopDropdownBtn = document.getElementById("desktopDropdownBtn");
+   const modulesDropdown = document.getElementById("modulesDropdown");
+
+   desktopDropdownBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const isHidden = modulesDropdown.classList.contains("hidden");
+    if (isHidden) {
+     modulesDropdown.classList.remove("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "true");
+    } else {
+     modulesDropdown.classList.add("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "false");
+    }
+   });
+
+   // Close dropdown if clicking outside
+   document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (
+     !desktopDropdownBtn.contains(target) &&
+     !modulesDropdown.contains(target)
+    ) {
+     modulesDropdown.classList.add("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "false");
+    }
+   });
+  </script>
+ <!--banner end-->
+<!--our services-->
+
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+
+
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+   <!-- Header -->
+   <div class="text-center max-w-3xl mx-auto mb-12 px-2">
+    <h5 class="text-lg sm:text-4xl md:text-5xl font-semibold text-gray-900">
+     Our
+     <span class="font-bold text-[#007a9c] cursor-pointer hover:text-[#e94e0a] transition-colors duration-300">
+      Services
+     </span>
+    </h5>
+    <p class="text-xs sm:text-sm text-gray-600 mt-2">
+     A Complete Software Ecosystem to make healthcare easier for everyone
+    </p>
+   </div>
+   <!-- Services grid -->
+   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 max-w-6xl mx-auto mb-16 px-2">
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-procedures fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      Out-Patient Management
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-bed fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      In-Patient Management
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-notes-medical fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      Clinical Management
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-vials fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      Laboratory
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-x-ray fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      Radiology
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-pills fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      Pharmacy
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-user-md fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      OT Management
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-file-medical-alt fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      Digital Records
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-chart-line fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      Revenue Analysis
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-laptop-medical fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      HMS Portal
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fas fa-mobile-alt fa-lg mb-6">
+     </i>
+     <p class="text-5xs font-bold text-center leading-tight">
+      Mobile Application
+     </p>
+    </div>
+    <div class="bg-[#e94e0a] rounded-md p-4 flex flex-col items-center text-white cursor-pointer hover:bg-[#007a9c] transition-colors duration-300">
+     <i class="fab fa-whatsapp fa-lg mb-6">
+     </i>
+     <p class="text-6xs font-bold text-center leading-tight">
+      WhatsApp Integration
+     </p>
+    </div>
+   </div>
+   <!-- How can we help you? -->
+   <div class="max-w-5xl mx-auto px-2">
+    <h3 class="text-center text-base sm:text-lg md:text-4xl font-semibold text-gray-900 mb-3">
+     How can we help you?
+    </h3>
+    <p class="text-center text-xs sm:text-sm text-gray-600 max-w-3xl mx-auto mb-8">
+     Through our constant interactions with medical practitioners, patients and clinic administrators we are well equipped to understand challenges faced at the ground level and offer practical and simple solutions
+    </p>
+    <div class="flex flex-col md:flex-row md:space-x-6 items-center md:items-start">
+     <!-- Left list -->
+     <ul class="flex flex-col space-y-2 md:w-1/3">
+      <li class="flex items-center space-x-2 bg-[#e94e0a] text-white text-xs font-semibold rounded px-3 py-2">
+       <i class="fas fa-exclamation-circle text-[10px]">
+       </i>
+       <span>
+        Prevent revenue Loss from missed patient visit &amp; patient leakage
+       </span>
+      </li>
+      <li class="flex items-center space-x-2 bg-[#007a9c] text-white text-xs font-semibold rounded px-3 py-2">
+       <i class="fas fa-check-circle text-[10px]">
+       </i>
+       <span>
+        Reduce communication gap with patients due to language barrier
+       </span>
+      </li>
+      <li class="flex items-center space-x-2 bg-[#007a9c] text-white text-xs font-semibold rounded px-3 py-2">
+       <i class="fas fa-check-circle text-[10px]">
+       </i>
+       <span>
+        Get rid of voluminous paper files for medical history
+       </span>
+      </li>
+      <li class="flex items-center space-x-2 bg-[#007a9c] text-white text-xs font-semibold rounded px-3 py-2">
+       <i class="fas fa-check-circle text-[10px]">
+       </i>
+       <span>
+        Help Manage different departments in a hospital effectively
+       </span>
+      </li>
+      <li class="flex items-center space-x-2 bg-[#007a9c] text-white text-xs font-semibold rounded px-3 py-2">
+       <i class="fas fa-check-circle text-[10px]">
+       </i>
+       <span>
+        Avoid lengthy consults from repeated data entry
+       </span>
+      </li>
+      <li class="flex items-center space-x-2 bg-[#007a9c] text-white text-xs font-semibold rounded px-3 py-2">
+       <i class="fas fa-check-circle text-[10px]">
+       </i>
+       <span>
+        Avoid disconnect between doctor, pharmacy and pathology
+       </span>
+      </li>
+     </ul>
+     <!-- Right image with caption -->
+     <div class="mt-6 md:mt-0 md:w-2/3 border border-[#e94e0a] rounded-md overflow-hidden max-w-full">
+      <img alt="Doctor on video call on laptop screen showing an x-ray image" class="w-full h-auto object-cover" height="350" src="images/digital records img1.jpeg" width="600"/>
+      <div class="bg-[#e94e0a] text-white text-xs font-semibold px-3 py-2">
+       Automated SMS reminders. Tele-consultation with EMR
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+<!--our services end-->
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    /* Fade-in animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Slide in left */
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    /* Slide in right */
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease forwards;
+      opacity: 0;
+    }
+    .slide-in-right {
+      animation: slideInRight 0.8s ease forwards;
+      opacity: 0;
+    }
+    /* Hover fade background on card */
+    .hover-fade:hover {
+      background-color: rgba(254, 215, 170, 0.3); /* light orange fade */
+      transition: background-color 0.3s ease;
+    }
+  </style>
+
+  <!-- Section 1: Why Choose Ayucare Software? -->
+  <section class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 pt-12">
+    <h2 class="text-center font-extrabold text-gray-900 text-4xl sm:text-5xl md:text-6xl mb-6">
+      Why Choose <span class="text-teal-600">Ayucare Software?</span>
+    </h2>
+    <p class="text-center text-gray-700 text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto mb-12">
+      Ayucare is a comprehensive software solution that helps to run all your health care operations in a smooth and integrated way.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <!-- Card 1 -->
+      <div class="border border-gray-300 rounded-lg p-6 flex flex-col justify-between hover-fade slide-in-left" style="animation-delay: 0.1s" tabindex="0">
+        <div>
+          <i class="far fa-comment-alt text-orange-600 text-3xl"></i>
+          <h3 class="text-orange-600 font-bold text-2xl mt-4 leading-tight">
+            Automatic SMS Reminders
+          </h3>
+          <p class="text-gray-700 text-lg mt-2 leading-relaxed">
+            Patient retention tools like automatic SMS reminders help reduce patient missed visits by at least 20% resulting in reduced revenue leakage
+          </p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="border border-gray-300 rounded-lg p-6 flex flex-col justify-between hover-fade slide-in-right" style="animation-delay: 0.2s" tabindex="0">
+        <div>
+          <i class="fas fa-history text-orange-600 text-3xl"></i>
+          <h3 class="text-orange-600 font-bold text-2xl mt-4 leading-tight">
+            Easy &amp; simple view of patient’s history
+          </h3>
+          <p class="text-gray-700 text-lg mt-2 leading-relaxed">
+            Previous medical data can be viewed by the doctor on a single screen with a quicker process of prescription generation.
+          </p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="border border-gray-300 rounded-lg p-6 flex flex-col justify-between hover-fade slide-in-left" style="animation-delay: 0.3s" tabindex="0">
+        <div>
+          <i class="far fa-address-card text-orange-600 text-3xl"></i>
+          <h3 class="text-orange-600 font-bold text-2xl mt-4 leading-tight">
+            Auto translate Rx
+          </h3>
+          <p class="text-gray-700 text-lg mt-2 leading-relaxed">
+            Allows doctors to issue prescription instructions in the patient’s preferred language with a single click, avoids miscommunications.
+          </p>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="border border-gray-300 rounded-lg p-6 flex flex-col justify-between hover-fade slide-in-right" style="animation-delay: 0.4s" tabindex="0">
+        <div>
+          <i class="fas fa-chart-bar text-orange-600 text-3xl"></i>
+          <h3 class="text-orange-600 font-bold text-2xl mt-4 leading-tight">
+            Quick access to revenue and stock position
+          </h3>
+          <p class="text-gray-700 text-lg mt-2 leading-relaxed">
+            With revenue trend charts and stock position reports, clinic revenue and pharmacy stock positions can be accessed effortlessly.
+          </p>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="border border-gray-300 rounded-lg p-6 flex flex-col justify-between hover-fade slide-in-left" style="animation-delay: 0.5s" tabindex="0">
+        <div>
+          <i class="far fa-clock text-orange-600 text-3xl"></i>
+          <h3 class="text-orange-600 font-bold text-2xl mt-4 leading-tight">
+            50% time reduced for repeat prescription
+          </h3>
+          <p class="text-gray-700 text-lg mt-2 leading-relaxed">
+            Smart prescription options make writing repeat prescriptions easy &amp; quick for doctors especially in practices that involve chronic care of diseases.
+          </p>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="border border-gray-300 rounded-lg p-6 flex flex-col justify-between hover-fade slide-in-right" style="animation-delay: 0.6s" tabindex="0">
+        <div>
+          <i class="fas fa-coins text-orange-600 text-3xl"></i>
+          <h3 class="text-orange-600 font-bold text-2xl mt-4 leading-tight">
+            Easy recall of stored data
+          </h3>
+          <p class="text-gray-700 text-lg mt-2 leading-relaxed">
+            Ayucare software’s data retrieval tool enables easy recall of stored medical data for scientific paper presentations and clinical research.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Get Ready To Digitalise Your Clinical Practice -->
+  <section class="mt-16 bg-teal-800 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-14 flex flex-col md:flex-row items-center md:items-start">
+      <div class="md:w-1/2 text-white">
+        <h3 class="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight max-w-md">
+          Get Ready To Digitalise Your Clinical Practice
+        </h3>
+        <p class="mt-4 text-lg sm:text-xl max-w-md">
+          All your medical and treatment records are just a click away
+        </p>
+        <button
+          class="mt-8 bg-orange-600 hover:bg-orange-700 text-white text-base font-semibold py-3 px-7 rounded transition-colors duration-300"
+          type="button"
+        >
+          Schedule a Free Demo
+        </button>
+      </div>
+      <div class="md:w-1/2 mt-10 md:mt-0 relative">
+        <img
+          alt="Laptop screen showing dashboard screenshot with various charts and graphs in green and yellow colors"
+          class="w-full max-w-lg mx-auto"
+          height="300"
+          src="https://storage.googleapis.com/a1aa/image/3717096b-fd7a-4562-a344-7a99e6055553.jpg"
+          width="600"
+        />
+        <div
+          aria-hidden="true"
+          class="absolute top-0 left-0 w-0 h-0 border-t-[150px] border-t-transparent border-r-[150px] border-r-teal-900 hidden md:block"
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Specialities we have worked with -->
+  <section class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-14">
+    <h4 class="text-center font-normal text-gray-900 text-2xl sm:text-3xl md:text-4xl mb-4">
+      Specialties
+      <span class="font-extrabold text-teal-700">we have worked with</span>
+    </h4>
+    <p class="text-center text-gray-600 text-base sm:text-lg max-w-3xl mx-auto mb-10">
+      Ayucare software technology provides innovative and easy to use software solutions for the following healthcare providers
+    </p>
+    <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 gap-6 max-w-6xl mx-auto">
+      <!-- Each specialty box -->
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Cardiology with a stylized heart"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/b9b5d95c-f666-4fe1-d6a5-40a355f3bb05.jpg"
+          width="40"
+        />
+        Cardiology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Diabetology with a syringe and vial"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/ae331e71-bd04-4f15-42d5-e1835c57da76.jpg"
+          width="40"
+        />
+        Diabetology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Dental with a tooth"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/d6d298cd-5aea-4110-8e14-060dacc25225.jpg"
+          width="40"
+        />
+        Dental
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Dermatology with a skin and hair follicle"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/2877a11e-960a-4212-edfd-529e1a0b59a2.jpg"
+          width="40"
+        />
+        Dermatology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Endocrinology with thyroid gland"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/c50af9b8-4bdb-42d5-5329-35f3bc375cdc.jpg"
+          width="40"
+        />
+        Endocrinology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing ENT with ear, nose, and throat"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/eee0f227-c8b1-48e4-9a19-427278b78a06.jpg"
+          width="40"
+        />
+        ENT
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Gynaecology with female reproductive system"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/2ca7f23c-7430-41c3-6b22-3e4dda8e06d2.jpg"
+          width="40"
+        />
+        Gynaecology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing General Surgery with scalpel and surgical tools"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/e91f513f-cafd-456a-6e95-bf57edb741a8.jpg"
+          width="40"
+        />
+        General Surgery
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Obstetrics with pregnant woman silhouette"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/4ac452cf-ce11-43b8-38e6-bc5dad735cfe.jpg"
+          width="40"
+        />
+        Obstetrics
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Paediatrics with baby and heart"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/263ed6b2-c46b-4b72-f78d-e4b6149921b5.jpg"
+          width="40"
+        />
+        Paediatrics
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Psychiatry with brain and heart"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/89a822ac-b04c-4270-f490-bf17120fce2b.jpg"
+          width="40"
+        />
+        Psychiatry
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Pulmonology with lungs"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/6f9c37e2-e3e4-4118-d0e1-89dee2f70e9a.jpg"
+          width="40"
+        />
+        Pulmonology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Rheumatology with joint bones"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/3864929d-868b-4667-ff20-606f527ecafc.jpg"
+          width="40"
+        />
+        Rheumatology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Nephrology with kidney"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/43b5be05-7fd3-4f0f-b5d8-8df3f99e8dff.jpg"
+          width="40"
+        />
+        Nephrology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Neurology with brain"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/71e5e84a-db74-45a2-36a1-3b960f886574.jpg"
+          width="40"
+        />
+        Neurology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Ophthalmology with eye"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/8dc5bd56-f78d-4494-21d6-cbe2e63240d2.jpg"
+          width="40"
+        />
+        Ophthalmology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Orthopedics with bone and joint"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/7a458b8d-20e0-4f05-fa91-f9eeebb29aad.jpg"
+          width="40"
+        />
+        Orthopedics
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Gastroenterology with stomach and intestines"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/3aa90bbc-0e40-413c-731f-88c9b0b04207.jpg"
+          width="40"
+        />
+        Gastroenterology
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Ayurveda with herbs and leaves"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/43e671dd-0f67-4274-0b80-f139d7a0bb18.jpg"
+          width="40"
+        />
+        Ayurveda
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing General Medicine with medical bag and cross"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/c8609274-924a-40d2-1ae9-030a26046f75.jpg"
+          width="40"
+        />
+        General Medicine
+      </div>
+      <div
+        class="border border-teal-700 rounded-lg p-4 flex flex-col items-center text-teal-700 text-xs sm:text-sm cursor-default select-none"
+      >
+        <img
+          alt="Icon representing Hepatology with liver"
+          class="mb-2"
+          height="40"
+          src="https://storage.googleapis.com/a1aa/image/73b2afea-ac2a-4b4b-bdcb-4371d390690b.jpg"
+          width="40"
+        />
+        Hepatology
+      </div>
+    </div>
+  </section>
+
+ <!--done-->
+ 
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    /* Scroll animation for Our Clients logos */
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .scrolling-wrapper {
+      display: flex;
+      width: max-content;
+      animation: scrollLeft 30s linear infinite;
+    }
+    /* Duplicate container to create seamless scroll */
+    .scrolling-container {
+      overflow: hidden;
+      width: 100%;
+    }
+  </style>
+
+
+  <section class="max-w-8xl mx-auto px-8 sm:px-8 lg:px-9 pt-13">
+    <h2 class="text-center text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 mb-8">
+      Our
+      <span class="text-teal-900">Clients</span>
+    </h2>
+    <div class="scrolling-container max-w-full mx-auto">
+      <div
+        aria-label="Scrolling client logos"
+        class="scrolling-wrapper space-x-8"
+      >
+        <img
+          alt="Logo of GV Speciality Hospital with blue and green text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/1827238c-e4ea-4580-2e67-023a96bff643.jpg"
+          width="200"
+        />
+        <img
+          alt="Logo of JP Hospital with red and blue icon and text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/553bb460-0b55-4b21-35eb-b6d9a97ed6a8.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of N.M. Hospital with purple text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/8a7c095f-e82e-4b3a-081e-ba91a68ca8d3.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Pulse Super Speciality Hospital with blue and orange text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/e8bc171f-f211-487c-2580-97934101038d.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Sahasrabuddhe Hospital &amp; I.G.C.U. with green text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/9958980c-760c-4a26-20ea-209edfb12225.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Sai Seva Hospital with red text and circular image on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/d5e25133-71b3-462e-d56b-68ae72fcba89.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Armoraa with purple icon and text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/96fd4d37-840a-4742-b4c4-70334aa17405.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Diabecare Diabetes &amp; Typical Clinic with orange text and icon on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/f4e4e61d-0791-412a-64e6-e720620c5429.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of DiabCare India Comprehensive Diabetes Management Clinic with blue and orange text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/1b7deeb3-c2e5-401f-fc84-1dfa3a046c77.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Robin Sugar with blue text and icon on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/5166224f-e8c6-4189-3d83-8a6b99f95c6f.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Advanced Diabetes Centre with dark blue text and icon on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/8dbf2c11-4b69-49b3-386e-686eba3366a7.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Armoraa with purple icon and text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/96fd4d37-840a-4742-b4c4-70334aa17405.jpg"
+          width="168"
+        />
+        <!-- Repeat logos for seamless scroll -->
+        <img
+          alt="Logo of GV Speciality Hospital with blue and green text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/1827238c-e4ea-4580-2e67-023a96bff643.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of JP Hospital with red and blue icon and text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/553bb460-0b55-4b21-35eb-b6d9a97ed6a8.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of N.M. Hospital with purple text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/8a7c095f-e82e-4b3a-081e-ba91a68ca8d3.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Pulse Super Speciality Hospital with blue and orange text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/e8bc171f-f211-487c-2580-97934101038d.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Sahasrabuddhe Hospital &amp; I.G.C.U. with green text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/9958980c-760c-4a26-20ea-209edfb12225.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Sai Seva Hospital with red text and circular image on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/d5e25133-71b3-462e-d56b-68ae72fcba89.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Armoraa with purple icon and text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/96fd4d37-840a-4742-b4c4-70334aa17405.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Diabecare Diabetes &amp; Typical Clinic with orange text and icon on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/f4e4e61d-0791-412a-64e6-e720620c5429.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of DiabCare India Comprehensive Diabetes Management Clinic with blue and orange text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/1b7deeb3-c2e5-401f-fc84-1dfa3a046c77.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Robin Sugar with blue text and icon on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/5166224f-e8c6-4189-3d83-8a6b99f95c6f.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Advanced Diabetes Centre with dark blue text and icon on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/8dbf2c11-4b69-49b3-386e-686eba3366a7.jpg"
+          width="168"
+        />
+        <img
+          alt="Logo of Armoraa with purple icon and text on white background"
+          class="max-h-20 object-contain"
+          height="80"
+          src="https://storage.googleapis.com/a1aa/image/96fd4d37-840a-4742-b4c4-70334aa17405.jpg"
+          width="168"
+        />
+      </div>
+    </div>
+  </section>
+<!--logos end-->
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      /* Hover effect for favicons */
+      .fav-icon {
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+      .fav-icon:hover {
+        transform: scale(1.2);
+        color: inherit;
+      }
+      /* Black background icons color override on hover */
+      a.bg-black:hover .fav-icon {
+        color: #14b8a6; /* teal-500 */
+      }
+      /* Footer background overlay */
+      .footer-bg {
+        position: relative;
+        overflow: hidden;
+      }
+      .footer-bg img.bg-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.12;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+      }
+      .footer-content {
+        position: relative;
+        z-index: 10;
+      }
+    </style>
+ 
+
+    <main class="flex-grow">
+      <section
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 flex flex-col md:flex-row items-center justify-center gap-12"
+      >
+        <img
+          alt="Map of India with multiple blue location pins marking various places"
+          class="max-w-xs w-full md:max-w-md lg:max-w-lg"
+          height="400"
+          src="https://storage.googleapis.com/a1aa/image/845628f4-e7ca-47c2-aae2-dacea7723d89.jpg"
+          width="320"
+        />
+        <div
+          class="bg-white rounded-lg shadow-lg p-8 max-w-lg w-full relative min-h-[360px] flex flex-col"
+        >
+          <div
+            class="text-teal-700 text-6xl font-extrabold leading-none mb-3 select-none"
+          >
+            ““
+          </div>
+          <h4
+            class="font-semibold text-gray-900 mb-4 text-lg sm:text-xl md:text-2xl"
+          >
+            What <span class="text-teal-700">Our Clients Say</span>
+          </h4>
+          <p
+            class="font-semibold text-gray-800 mb-3 text-base sm:text-lg md:text-xl"
+          >
+            Dr. Manoj Chadha
+          </p>
+          <p
+            class="text-gray-700 mb-6 leading-relaxed text-base sm:text-lg md:text-xl flex-grow"
+          >
+            User-friendly software, however software is as good as the need of
+            the end-user. You will be surprised at what it can offer.
+          </p>
+          <p class="text-gray-500 mb-8 text-base sm:text-lg md:text-xl">
+            Hope &amp; Care Centre
+          </p>
+          <div
+            class="flex items-center justify-between text-gray-700 text-lg sm:text-xl md:text-2xl"
+          >
+            <button
+              aria-label="Previous testimonial"
+              class="hover:text-teal-700 focus:outline-none"
+              id="prevBtn"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="flex space-x-4" id="dots">
+              <span
+                class="w-4 h-4 rounded-full bg-teal-700 cursor-pointer"
+                data-index="0"
+              ></span>
+              <span
+                class="w-4 h-4 rounded-full bg-gray-300 cursor-pointer"
+                data-index="1"
+              ></span>
+              <span
+                class="w-4 h-4 rounded-full bg-gray-300 cursor-pointer"
+                data-index="2"
+              ></span>
+            </div>
+            <button
+              aria-label="Next testimonial"
+              class="hover:text-teal-700 focus:outline-none"
+              id="nextBtn"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div
+            class="absolute bottom-8 right-8 text-yellow-400 text-2xl sm:text-3xl md:text-4xl select-none"
+          >
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </section>
+      <section
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 bg-gradient-to-b from-blue-900 to-blue-800 rounded-lg overflow-hidden flex flex-col md:flex-row items-center"
+      >
+        <div
+          class="p-8 md:p-12 max-w-lg text-white flex flex-col justify-center w-full md:w-1/2"
+        >
+          <h3
+            class="font-extrabold text-white text-2xl sm:text-3xl md:text-4xl mb-6 leading-tight"
+          >
+            Mobile Application
+          </h3>
+          <ul
+            class="list-disc list-inside space-y-3 text-base sm:text-lg md:text-xl max-w-xl"
+          >
+            <li>
+              All-in-one platform for patients to manage their health records on
+              the go
+            </li>
+            <li>
+              Supports push notifications for appointments, medicines, and lab
+              results
+            </li>
+            <li>
+              Enables digital payments, report downloads, and prescription
+              tracking
+            </li>
+            <li>WhatsApp Integration</li>
+            <li>Smart chat assistant for Appointment Bookings and queries</li>
+            <li>Instant delivery of Reports, Reminders, and Prescription pages</li>
+          </ul>
+          <div class="flex space-x-6 mt-8">
+            <a
+              class="inline-block bg-black rounded-md px-5 py-3 text-base font-semibold flex items-center space-x-4 hover:bg-gray-900 transition"
+              href="#"
+            >
+              <img
+                alt="Google Play store icon with black background and white letter G"
+                class="w-8 h-8 fav-icon"
+                height="32"
+                src="images/Hospital-Pharmacy.jpg"
+                width="32"
+              />
+              <span>Get it on Google Play</span>
+            </a>
+            <a
+              class="inline-block bg-black rounded-md px-5 py-3 text-base font-semibold flex items-center space-x-4 hover:bg-gray-900 transition"
+              href="#"
+            >
+              <img
+                alt="Apple App Store icon with black background and white letter A"
+                class="w-8 h-8 fav-icon"
+                height="32"
+                src="images/close-up-nurse-holding-typing-tablet-standing-stomatologic-clinic-while-doctor-is-working-with-patient-background-using-monitor-with-chroma-key-izolated-pc-key-mockup-pc-display.jpg"
+                width="32"
+              />
+              <span>Download on the App Store</span>
+            </a>
+          </div>
+        </div>
+        <div
+          class="flex flex-wrap justify-center md:justify-start gap-10 p-8 md:p-12 w-full md:w-1/2"
+        >
+          <img
+            alt="Mobile phone showing Ayucare Pocket app login screen with username and password fields and orange login button"
+            class="rounded-lg shadow-lg max-h-[420px] object-contain flex-shrink-0 w-48 sm:w-56 md:w-64"
+            height="420"
+            src="images/homemobileimg.jpg"
+            width="160"
+          />
+          <img
+            alt="Mobile phone showing Ayucare Pocket app screen to record sugar values with form fields and save button"
+            class="rounded-lg shadow-lg max-h-[420px] object-contain flex-shrink-0 w-48 sm:w-56 md:w-64"
+            height="420"
+            src="images/homemobileimg2.jpg"
+            width="160"
+          />
+        </div>
+      </section>
+      <section
+        class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-20 bg-white rounded-xl shadow-lg overflow-hidden"
+      >
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-12 py-14 md:py-20 items-center"
+        >
+          <div
+            class="flex flex-col items-center text-center px-6 md:px-4 lg:px-6 space-y-5 hover:shadow-lg rounded-lg transition-shadow cursor-pointer"
+          >
+            <div
+              class="bg-green-100 text-green-600 rounded-full p-6 shadow-md text-5xl md:text-6xl flex items-center justify-center fav-icon"
+              title="WhatsApp Integration"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h4 class="text-2xl md:text-3xl font-semibold text-gray-800">
+              WhatsApp Integration
+            </h4>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-xs">
+              Seamlessly connect with patients through WhatsApp for instant
+              communication and updates.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center text-center px-6 md:px-4 lg:px-6 space-y-5 hover:shadow-lg rounded-lg transition-shadow cursor-pointer"
+          >
+            <div
+              class="bg-blue-100 text-blue-600 rounded-full p-6 shadow-md text-5xl md:text-6xl flex items-center justify-center fav-icon"
+              title="Smart Chat Assistant"
+            >
+              <i class="fas fa-robot"></i>
+            </div>
+            <h4 class="text-2xl md:text-3xl font-semibold text-gray-800">
+              Smart Chat Assistant
+            </h4>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-xs">
+              AI-powered assistant to help patients book appointments and answer
+              queries instantly.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center text-center px-6 md:px-4 lg:px-6 space-y-5 hover:shadow-lg rounded-lg transition-shadow cursor-pointer"
+          >
+            <div
+              class="bg-yellow-100 text-yellow-600 rounded-full p-6 shadow-md text-5xl md:text-6xl flex items-center justify-center fav-icon"
+              title="Instant Delivery"
+            >
+              <i class="fas fa-file-medical-alt"></i>
+            </div>
+            <h4 class="text-2xl md:text-3xl font-semibold text-gray-800">
+              Instant Delivery
+            </h4>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-xs">
+              Quick delivery of reports, reminders, and prescription pages to
+              patients’ devices.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+
+    <footer class="bg-gray-900 text-gray-300 mt-20 footer-bg relative">
+      <img
+        src="images/close-up-nurse-holding-typing-tablet-standing-stomatologic-clinic-while-doctor-is-working-with-patient-background-using-monitor-with-chroma-key-izolated-pc-key-mockup-pc-display.jpg"
+        alt="Abstract healthcare technology background with soft blue and teal tones"
+        class="bg-image"
+        aria-hidden="true"
+      />
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 footer-content grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="flex flex-col space-y-6">
+          <img
+            alt="Ayucare company logo rectangle with teal text on dark background"
+            class="w-[220px] h-[80px] object-contain"
+            height="80"
+            src="images/logoayucare.png"
+            width="220"
+          />
+          <p class="text-gray-300 max-w-xs leading-relaxed text-lg">
+            Ayucare is dedicated to providing innovative healthcare software and
+            mobile solutions to improve patient care and hospital management.
+          </p>
+        </div>
+        <div>
+          <h5 class="text-white font-semibold text-xl mb-6">Useful Links</h5>
+          <ul class="space-y-4 text-gray-400 text-lg">
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="index"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="aboutus"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="out-patient-management"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="contactus"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-white font-semibold text-xl mb-6">Contact Us</h5>
+          <ul class="space-y-6 text-gray-400 text-lg">
+            <li class="flex items-start space-x-4">
+              <i class="fas fa-map-marker-alt mt-1 text-teal-400 text-2xl"></i>
+              <span>
+                123 Health Street,<br />
+                Wellness City, 456789,<br />
+                India
+              </span>
+            </li>
+            <li class="flex items-center space-x-4">
+              <i class="fas fa-phone-alt text-teal-400 text-2xl"></i>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="tel:+911234567890"
+                >+91 12345 67890</a
+              >
+            </li>
+            <li class="flex items-center space-x-4">
+              <i class="fas fa-envelope text-teal-400 text-2xl"></i>
+              <a
+                class="hover:text-teal-400 transition-colors duration-200"
+                href="mailto:info@ayucare.com"
+                >info@ayucare.com</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-white font-semibold text-xl mb-6">Follow Us</h5>
+          <div class="flex space-x-8 text-gray-400 text-3xl">
+            <a
+              aria-label="Facebook"
+              class="hover:text-teal-400 transition-colors duration-200"
+              href="#"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              aria-label="Twitter"
+              class="hover:text-teal-400 transition-colors duration-200"
+              href="#"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              aria-label="Instagram"
+              class="hover:text-teal-400 transition-colors duration-200"
+              href="#"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              aria-label="LinkedIn"
+              class="hover:text-teal-400 transition-colors duration-200"
+              href="#"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+          <p class="mt-12 text-gray-400 text-lg max-w-xs leading-relaxed">
+            © 2024 Ayucare. All rights reserved.
+          </p>
+          <p class="mt-2 text-gray-400 text-lg max-w-xs leading-relaxed">
+            Designed and developed by
+            <a
+              class="text-teal-400 hover:underline"
+              href="https://prodbizsolutions.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Prodbizsolutions.com</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Testimonials data for seamless auto sliding
+      const testimonials = [
+        {
+          name: "Dr. Manoj Chadha",
+          text:
+            "User-friendly software, however software is as good as the need of the end-user. You will be surprised at what it can offer.",
+          center: "Hope & Care Centre",
+        },
+        {
+          name: "Dr. Anjali Sharma",
+          text:
+            "The software has transformed our hospital management and improved patient care significantly.",
+          center: "City Hospital",
+        },
+        {
+          name: "Dr. Rajesh Kumar",
+          text:
+            "Excellent support and easy to use interface. Highly recommended for clinics of all sizes.",
+          center: "Sunrise Clinic",
+        },
+      ];
+
+      let currentIndex = 0;
+
+      const nameEl = document.querySelector(
+        ".font-semibold.text-gray-800.mb-3.text-base.sm\\:text-lg.md\\:text-xl"
+      );
+      const textEl = document.querySelector(
+        ".text-gray-700.mb-6.leading-relaxed.text-base.sm\\:text-lg.md\\:text-xl"
+      );
+      const centerEl = document.querySelector(
+        ".text-gray-500.mb-8.text-base.sm\\:text-lg.md\\:text-xl"
+      );
+      const dots = document.querySelectorAll("#dots span");
+
+      function updateTestimonial(index) {
+        currentIndex = index;
+        nameEl.textContent = testimonials[index].name;
+        textEl.textContent = testimonials[index].text;
+        centerEl.textContent = testimonials[index].center;
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("bg-teal-700", i === index);
+          dot.classList.toggle("bg-gray-300", i !== index);
+        });
+      }
+
+      document.getElementById("prevBtn").addEventListener("click", () => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = testimonials.length - 1;
+        updateTestimonial(newIndex);
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= testimonials.length) newIndex = 0;
+        updateTestimonial(newIndex);
+      });
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          updateTestimonial(parseInt(dot.dataset.index));
+        });
+      });
+
+      // Auto slide every 5 seconds
+      setInterval(() => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= testimonials.length) newIndex = 0;
+        updateTestimonial(newIndex);
+      }, 5000);
+    </script>
+  </body>
+</html>
