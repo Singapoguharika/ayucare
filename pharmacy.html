@@ -378,290 +378,686 @@
   </script>
 <!--nav end-->
 
+
+  
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Pharmacy - AyuCare Hospital Management System
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js">
+  </script>
   <style>
    body {
       font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+      background-color: #f7f9fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card-3d {
+      transform: translateY(0);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-3d:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-container {
+      transition: all 0.3s ease;
+    }
+
+    .card-3d:hover .icon-container {
+      transform: scale(1.1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .gradient-overlay {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-3d:hover .gradient-overlay {
+      opacity: 1;
+    }
+
+    .decorative-dot {
+      transition: opacity 0.3s ease;
+    }
+
+    .card-3d:hover .decorative-dot {
+      opacity: 1;
+    }
+
+    .title-gradient {
+      background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Circular cards */
+    .circular-card {
+      transform: translateY(0) scale(1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+        0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    .circular-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-square {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .circular-card:hover .icon-square {
+      transform: scale(1.1);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .gradient-overlay {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .circular-card:hover .gradient-overlay {
+      opacity: 1;
+    }
+
+    .step-number {
+      transition: all 0.3s ease;
+    }
+
+    .circular-card:hover .step-number {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Animation classes */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-in-up.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-100 {
+      transition-delay: 100ms;
+    }
+
+    .delay-300 {
+      transition-delay: 300ms;
+    }
+
+    .delay-500 {
+      transition-delay: 500ms;
+    }
+
+    /* Process flow indicators */
+    .flow-dot {
+      transition: all 1s ease;
+    }
+
+    .flow-line {
+      transition: all 1s ease;
+    }
+
+    .flow-dot.animate {
+      background-color: #3b82f6;
+      transform: scale(1);
+    }
+
+    .flow-line.animate {
+      background-color: #93c5fd;
+    }
+
+    /* Title gradient */
+    .title-gradient {
+      background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Custom animations for scroll-triggered effects */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animation-delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .animation-delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    .animation-delay-600 {
+      animation-delay: 0.6s;
+    }
+
+    .animation-delay-800 {
+      animation-delay: 0.8s;
+    }
+
+    .animation-delay-1000 {
+      animation-delay: 1.0s;
+    }
+
+    /* Enhanced hover effects */
+    .group:hover .shadow-lg {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Custom Tailwind configuration */
+    .bg-gradient-hover-1:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(101, 186, 193, 0.1),
+        rgba(101, 186, 193, 0.05)
+      );
+    }
+
+    .bg-gradient-hover-2:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(124, 197, 183, 0.1),
+        rgba(124, 197, 183, 0.05)
+      );
+    }
+
+    .bg-gradient-hover-3:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(221, 129, 45, 0.1),
+        rgba(221, 129, 45, 0.05)
+      );
+    }
+
+    .bg-gradient-hover-4:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(0, 98, 158, 0.1),
+        rgba(0, 98, 158, 0.05)
+      );
+    }
+
+    .bg-gradient-hover-5:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(31, 151, 220, 0.1),
+        rgba(31, 151, 220, 0.05)
+      );
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #1f2937;
+      color: #d1d5db;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer img.bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    footer .footer-content {
+      position: relative;
+      z-index: 10;
     }
   </style>
  </head>
- <body class="bg-white text-gray-900 overflow-x-hidden">
-  <!-- Top Section -->
-  <section class="flex flex-col md:flex-row items-center md:items-start bg-[#e9f0f6] overflow-x-hidden">
-   <div class="md:w-1/2 px-6 md:px-16 py-12 md:py-20">
-    <h1 class="text-[#0f4c5c] font-semibold text-2xl sm:text-3xl md:text-4xl leading-tight max-w-full md:max-w-[400px]">
-     Pharmacy
-    </h1>
-    <ul class="text-sm md:text-base text-[#4a4a4a] mt-6 space-y-3 max-w-full md:max-w-[400px] list-disc list-inside">
-     <li>Check if medicines are available instantly when the doctor prescribes them</li>
-     <li>Give medicines to out-patients and in-patients with automatic billing</li>
-     <li>Track expiry dates and get alerts for low stock</li>
-     <li>Easy process to return or replace medicines</li>
-    </ul>
-   </div>
-   <div class="md:w-1/2 relative flex justify-center md:justify-end px-6 md:px-16 py-12 md:py-20 overflow-x-hidden">
-    <img alt="Pharmacy management software screen showing billing details on a tablet device" class="rounded border border-gray-300 shadow-sm max-w-full w-[360px] h-auto" src="https://storage.googleapis.com/a1aa/image/d5802800-41d5-4d10-b481-6da2889f1601.jpg"/>
-   </div>
-  </section>
-  <!-- Middle Section -->
-  <section class="max-w-7xl mx-auto px-6 md:px-16 py-12 md:py-20">
-   <h2 class="text-center font-semibold text-lg sm:text-xl md:text-2xl mb-3">
-    Enjoy stress-free pharmacy management
-    <span class="text-[#0f4c5c]">
-     with Ayucare
-    </span>
-   </h2>
-   <p class="text-center text-sm md:text-base text-gray-600 mb-10 max-w-[600px] mx-auto px-2">
-    Manage stocks, conduct audits, limit waiting time and do a lot more with an Integrated Pharmacy software.
-   </p>
-   <!-- Buttons -->
-   <div class="flex justify-center gap-3 mb-10 flex-wrap px-2">
-    <button class="bg-[#d94a00] text-white text-sm md:text-base font-semibold px-6 py-3 rounded-sm flex items-center gap-3 whitespace-nowrap">
-     <i class="fas fa-file-invoice text-lg md:text-xl">
-     </i>
-     Billing
-    </button>
-    <button class="bg-[#0f4c5c] text-white text-sm md:text-base font-semibold px-6 py-3 rounded-sm flex items-center gap-3 whitespace-nowrap">
-     <i class="fas fa-boxes text-lg md:text-xl">
-     </i>
-     Inventory &amp; Reports
-    </button>
-    <button class="bg-[#0f4c5c] text-white text-sm md:text-base font-semibold px-6 py-3 rounded-sm flex items-center gap-3 whitespace-nowrap">
-     <i class="fas fa-chart-line text-lg md:text-xl">
-     </i>
-     Revenue Reports
-    </button>
-   </div>
-   <!-- Content with checklist and video -->
-   <div class="flex flex-col md:flex-row gap-8 md:gap-16 px-2">
-    <ul class="flex-1 text-xs md:text-sm text-gray-700 space-y-2 min-w-0">
-     <li class="flex items-start gap-2">
-      <i class="fas fa-check text-[#d94a00] mt-1 text-sm md:text-base flex-shrink-0">
-      </i>
-      <span class="leading-snug">
-       Easy &amp; quick billing integrated with
-       <span class="text-[#0f4c5c] font-semibold">
-        Prescription medicine orders.
-       </span>
+ <body>
+  <!-- Pharmacy Hero Section -->
+  <section class="bg-[#f0f9ff] py-20 px-6 md:px-16">
+   <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
+    <!-- Left: Text Content -->
+    <div class="max-w-xl text-center md:text-left">
+     <h1 class="text-4xl md:text-5xl font-bold text-[#00629e] leading-tight mb-6">
+      Efficient Pharmacy Management with
+      <span class="text-[#dd812d]">
+       Ayucare Pharmacy Module
       </span>
-     </li>
-     <li class="flex items-start gap-2">
-      <i class="fas fa-check text-[#d94a00] mt-1 text-sm md:text-base flex-shrink-0">
-      </i>
-      <span class="leading-snug">
-       Retail billing for out patient, in patient and counter sales.
-      </span>
-     </li>
-     <li class="flex items-start gap-2">
-      <i class="fas fa-check text-[#d94a00] mt-1 text-sm md:text-base flex-shrink-0">
-      </i>
-      <span class="leading-snug">
-       Bill discounts at item level and bill level can be made.
-      </span>
-     </li>
-     <li class="flex items-start gap-2">
-      <i class="fas fa-check text-[#d94a00] mt-1 text-sm md:text-base flex-shrink-0">
-      </i>
-      <span class="leading-snug">
-       In billing batch wise first in first out sequence for stock clearance.
-      </span>
-     </li>
-     <li class="flex items-start gap-2">
-      <i class="fas fa-check text-[#d94a00] mt-1 text-sm md:text-base flex-shrink-0">
-      </i>
-      <span class="leading-snug">
-       User wise access control for Bill cancel, refund and other stock modules.
-      </span>
-     </li>
-     <li class="flex items-start gap-2">
-      <i class="fas fa-check text-[#d94a00] mt-1 text-sm md:text-base flex-shrink-0">
-      </i>
-      <span class="leading-snug">
-       Display of outstanding due for patients during billing.
-      </span>
-     </li>
-     <li class="flex items-start gap-2">
-      <i class="fas fa-check text-[#d94a00] mt-1 text-sm md:text-base flex-shrink-0">
-      </i>
-      <span class="leading-snug">
-       For Inpatients separate deposit amount collection at pharmacy and bills reconciliation.
-      </span>
-     </li>
-    </ul>
-    <div class="flex-1 min-w-0">
-     <iframe allowfullscreen="" class="w-full aspect-video rounded border border-gray-300" src="https://www.youtube.com/embed/6v6v6v6v6v6" title="How to generate the Drug schedule report in One Glance Pharmacy software">
-     </iframe>
+     </h1>
+     <p class="text-lg text-gray-700 mb-6">
+      Streamline your pharmacy operations with real-time inventory tracking, prescription management, billing, and seamless integration with hospital systems.
+     </p>
+     <button class="bg-[#1f97dc] text-white font-semibold px-6 py-3 rounded-full hover:bg-[#00629e] transition">
+      Request a Demo
+     </button>
+    </div>
+    <!-- Right: Pharmacy Illustration -->
+    <div class="w-full md:w-1/2">
+     <img alt="3D illustration of a modern pharmacy with shelves, medicines, and a pharmacist assisting a customer" class="w-full max-w-md mx-auto md:mx-0 animate-fade-in-up drop-shadow-lg" height="400" src="https://storage.googleapis.com/a1aa/image/4d4e8eb3-8bc4-45b3-e4a7-777b166234c5.jpg" width="600"/>
     </div>
    </div>
   </section>
-  <!-- Bottom Section -->
-  <section class="max-w-7xl mx-auto px-6 md:px-16 py-8 md:py-12 flex flex-wrap justify-center gap-6">
-   <div class="border border-[#0f4c5c] rounded-md w-[140px] md:w-[160px] text-center py-5">
-    <p class="text-[#0f4c5c] font-semibold text-xl md:text-2xl">
-     1000+
-    </p>
-    <p class="text-sm md:text-base text-gray-700 mt-2">
-     Clinics Served
-    </p>
-   </div>
-   <div class="border border-[#0f4c5c] rounded-md w-[140px] md:w-[160px] text-center py-5">
-    <p class="text-[#0f4c5c] font-semibold text-xl md:text-2xl">
-     13+
-    </p>
-    <p class="text-sm md:text-base text-gray-700 mt-2">
-     Years of Experience
-    </p>
-   </div>
-   <div class="border border-[#0f4c5c] rounded-md w-[140px] md:w-[160px] text-center py-5">
-    <p class="text-[#0f4c5c] font-semibold text-xl md:text-2xl">
-     25+
-    </p>
-    <p class="text-sm md:text-base text-gray-700 mt-2">
-     Medical Specialties
-    </p>
-   </div>
-   <div class="border border-[#0f4c5c] rounded-md w-[140px] md:w-[160px] text-center py-5">
-    <p class="text-[#0f4c5c] font-semibold text-xl md:text-2xl">
-     120+
-    </p>
-    <p class="text-sm md:text-base text-gray-700 mt-2">
-     Cities Covered
-    </p>
+  <!-- Pharmacy Features Section -->
+  <section class="py-16 px-4 bg-gradient-to-br from-gray-50 to-white text-gray-800">
+   <h2 class="text-4xl font-bold text-center mb-4 title-gradient" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);">
+    Key Features of Our Pharmacy Module
+   </h2>
+   <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+    Comprehensive tools to manage your pharmacy efficiently and accurately
+   </p>
+   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <!-- Inventory Management Card -->
+    <div class="card-3d bg-blue-50 border-2 border-blue-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+     <div class="gradient-overlay absolute inset-0 rounded-2xl">
+     </div>
+     <div class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+      <img alt="Icon showing stacked medicine boxes representing inventory management" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/17b7beae-f675-4d61-6736-3a0cef1d2879.jpg" width="40"/>
+     </div>
+     <div class="text-center relative z-10">
+      <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+       Inventory Management
+      </h3>
+      <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+       Track stock levels, expiry dates, and reorder alerts to avoid shortages or wastage.
+      </p>
+     </div>
+     <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60">
+     </div>
+     <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40">
+     </div>
+    </div>
+    <!-- Prescription Processing Card -->
+    <div class="card-3d bg-green-50 border-2 border-green-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+     <div class="gradient-overlay absolute inset-0 rounded-2xl">
+     </div>
+     <div class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+      <img alt="Icon of a clipboard with a prescription form" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/ffd9e8ce-cef2-40bb-895e-b2ae92446b99.jpg" width="40"/>
+     </div>
+     <div class="text-center relative z-10">
+      <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+       Prescription Processing
+      </h3>
+      <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+       Efficiently manage prescriptions, verify dosages, and track dispensing history.
+      </p>
+     </div>
+     <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60">
+     </div>
+     <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40">
+     </div>
+    </div>
+    <!-- Billing & Payments Card -->
+    <div class="card-3d bg-purple-50 border-2 border-purple-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+     <div class="gradient-overlay absolute inset-0 rounded-2xl">
+     </div>
+     <div class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+      <img alt="Icon of a credit card representing billing and payments" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/c69c0129-3214-42d2-bdf2-07e229a1de81.jpg" width="40"/>
+     </div>
+     <div class="text-center relative z-10">
+      <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+       Billing &amp; Payments
+      </h3>
+      <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+       Generate invoices, process payments, and integrate with hospital billing systems.
+      </p>
+     </div>
+     <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60">
+     </div>
+     <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40">
+     </div>
+    </div>
+    <!-- Supplier Management Card -->
+    <div class="card-3d bg-rose-50 border-2 border-rose-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+     <div class="gradient-overlay absolute inset-0 rounded-2xl">
+     </div>
+     <div class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+      <img alt="Icon of a delivery truck representing supplier management" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/f4ea84ee-5257-43d3-0353-71327fc05f6d.jpg" width="40"/>
+     </div>
+     <div class="text-center relative z-10">
+      <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+       Supplier Management
+      </h3>
+      <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+       Manage supplier details, purchase orders, and delivery schedules efficiently.
+      </p>
+     </div>
+     <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60">
+     </div>
+     <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40">
+     </div>
+    </div>
+    <!-- Reporting & Analytics Card -->
+    <div class="card-3d bg-amber-50 border-2 border-amber-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+     <div class="gradient-overlay absolute inset-0 rounded-2xl">
+     </div>
+     <div class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+      <img alt="Icon of a bar chart representing reporting and analytics" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/21ddc5b4-9514-494f-68a2-dc33dabbd5db.jpg" width="40"/>
+     </div>
+     <div class="text-center relative z-10">
+      <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+       Reporting &amp; Analytics
+      </h3>
+      <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+       Gain insights into sales, inventory trends, and pharmacy performance.
+      </p>
+     </div>
+     <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60">
+     </div>
+     <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40">
+     </div>
+    </div>
+    <!-- Mobile Access Card -->
+    <div class="card-3d bg-cyan-50 border-2 border-cyan-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+     <div class="gradient-overlay absolute inset-0 rounded-2xl">
+     </div>
+     <div class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+      <img alt="Icon of a smartphone representing mobile access" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/10cfdb90-1142-4b1b-890f-5c123690bcae.jpg" width="40"/>
+     </div>
+     <div class="text-center relative z-10">
+      <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+       Mobile Access
+      </h3>
+      <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+       Manage pharmacy operations on-the-go with our mobile-friendly portal.
+      </p>
+     </div>
+     <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60">
+     </div>
+     <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40">
+     </div>
+    </div>
    </div>
   </section>
-    
-  <footer class="bg-gray-900 text-gray-300 mt-20 footer-bg relative">
-      <img
-  src="images/close-up-nurse-holding-typing-tablet-standing-stomatologic-clinic-while-doctor-is-working-with-patient-background-using-monitor-with-chroma-key-izolated-pc-key-mockup-pc-display.jpg"
-  alt="Abstract healthcare technology background"
-  class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none"
-/>
-      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 footer-content grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div class="flex flex-col space-y-6">
-          <img
-            alt="Ayucare company logo rectangle with teal text on dark background"
-            class="w-[220px] h-[80px] object-contain"
-            height="80"
-            src="images/logoayucare.png"
-            width="220"
-          />
-          <p class="text-gray-300 max-w-xs leading-relaxed text-lg">
-            Ayucare is dedicated to providing innovative healthcare software and
-            mobile solutions to improve patient care and hospital management.
-          </p>
-        </div>
-        <div>
-          <h5 class="text-white font-semibold text-xl mb-6">Useful Links</h5>
-          <ul class="space-y-4 text-gray-400 text-lg">
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="index"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="aboutus"
-                >About Us</a
-              >
-            </li>
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="out-patient-management"
-                >Services</a
-              >
-            </li>
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="contactus"
-                >Contact</a
-              >
-            </li>
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="#"
-                >Privacy Policy</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h5 class="text-white font-semibold text-xl mb-6">Contact Us</h5>
-          <ul class="space-y-6 text-gray-400 text-lg">
-            <li class="flex items-start space-x-4">
-              <i class="fas fa-map-marker-alt mt-1 text-teal-400 text-2xl"></i>
-              <span>
-                123 Health Street,<br />
-                Wellness City, 456789,<br />
-                India
-              </span>
-            </li>
-            <li class="flex items-center space-x-4">
-              <i class="fas fa-phone-alt text-teal-400 text-2xl"></i>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="tel:+911234567890"
-                >+91 12345 67890</a
-              >
-            </li>
-            <li class="flex items-center space-x-4">
-              <i class="fas fa-envelope text-teal-400 text-2xl"></i>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="mailto:info@ayucare.com"
-                >info@ayucare.com</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h5 class="text-white font-semibold text-xl mb-6">Follow Us</h5>
-          <div class="flex space-x-8 text-gray-400 text-3xl">
-            <a
-              aria-label="Facebook"
-              class="hover:text-teal-400 transition-colors duration-200"
-              href="#"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a
-              aria-label="Twitter"
-              class="hover:text-teal-400 transition-colors duration-200"
-              href="#"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a
-              aria-label="Instagram"
-              class="hover:text-teal-400 transition-colors duration-200"
-              href="#"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a
-              aria-label="LinkedIn"
-              class="hover:text-teal-400 transition-colors duration-200"
-              href="#"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-          </div>
-          <p class="mt-12 text-gray-400 text-lg max-w-xs leading-relaxed">
-            © 2024 Ayucare. All rights reserved.
-          </p>
-          <p class="mt-2 text-gray-400 text-lg max-w-xs leading-relaxed">
-            Designed and developed by
-            <a
-              class="text-teal-400 hover:underline"
-              href="https://prodbizsolutions.com"
-              rel="noopener noreferrer"
-              target="_blank"
-              >Prodbizsolutions.com</a
-            >
-          </p>
-        </div>
+  <!-- How Pharmacy Works Section -->
+  <section class="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden" id="how-it-works">
+   <div class="max-w-5xl mx-auto">
+    <h2 class="fade-in-up text-4xl font-bold text-center mb-16 text-gray-800 title-gradient" id="section-title" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);">
+     How the Pharmacy Module Works
+    </h2>
+    <div class="grid md:grid-cols-3 gap-12 text-center">
+     <!-- Step 1 -->
+     <div class="fade-in-up delay-100" id="card-1">
+      <div class="circular-card bg-blue-100 w-48 h-48 mx-auto rounded-full flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group">
+       <div class="gradient-overlay absolute inset-0 rounded-full">
+       </div>
+       <div class="icon-square bg-blue-500 w-20 h-20 rounded-xl flex items-center justify-center mb-4 relative z-10">
+        <img alt="Image of medicine boxes stacked on shelves representing inventory management" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/390ced7b-edb1-4dcc-b748-90d9514cf888.jpg" width="40"/>
+       </div>
+       <div class="step-number absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm font-bold text-gray-600 shadow-md">
+        1
+       </div>
       </div>
-    </footer>
+      <div class="mt-8">
+       <h3 class="text-xl font-semibold mb-3 text-gray-800">
+        Manage Inventory
+       </h3>
+       <p class="text-gray-600 leading-relaxed max-w-xs mx-auto">
+        Monitor stock levels, receive alerts for low inventory and expiry dates.
+       </p>
+      </div>
+     </div>
+     <!-- Step 2 -->
+     <div class="fade-in-up delay-300" id="card-2">
+      <div class="circular-card bg-green-100 w-48 h-48 mx-auto rounded-full flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group">
+       <div class="gradient-overlay absolute inset-0 rounded-full">
+       </div>
+       <div class="icon-square bg-green-500 w-20 h-20 rounded-xl flex items-center justify-center mb-4 relative z-10">
+        <img alt="Image of a pharmacist checking a prescription" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/feb2ac84-5f2a-4760-f1a9-6d04d4121b80.jpg" width="40"/>
+       </div>
+       <div class="step-number absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm font-bold text-gray-600 shadow-md">
+        2
+       </div>
+      </div>
+      <div class="mt-8">
+       <h3 class="text-xl font-semibold mb-3 text-gray-800">
+        Process Prescriptions
+       </h3>
+       <p class="text-gray-600 leading-relaxed max-w-xs mx-auto">
+        Verify and dispense medications accurately with integrated prescription management.
+       </p>
+      </div>
+     </div>
+     <!-- Step 3 -->
+     <div class="fade-in-up delay-500" id="card-3">
+      <div class="circular-card bg-purple-100 w-48 h-48 mx-auto rounded-full flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group">
+       <div class="gradient-overlay absolute inset-0 rounded-full">
+       </div>
+       <div class="icon-square bg-purple-500 w-20 h-20 rounded-xl flex items-center justify-center mb-4 relative z-10">
+        <img alt="Image of a billing invoice and payment transaction" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/64dd9967-a64b-4818-b3ed-6f19002df970.jpg" width="40"/>
+       </div>
+       <div class="step-number absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm font-bold text-gray-600 shadow-md">
+        3
+       </div>
+      </div>
+      <div class="mt-8">
+       <h3 class="text-xl font-semibold mb-3 text-gray-800">
+        Billing &amp; Reporting
+       </h3>
+       <p class="text-gray-600 leading-relaxed max-w-xs mx-auto">
+        Generate bills, track sales, and analyze pharmacy performance with detailed reports.
+       </p>
+      </div>
+     </div>
+    </div>
+    <div class="flex justify-center items-center mt-12 space-x-4">
+     <div class="flow-dot w-3 h-3 rounded-full bg-gray-300 transform scale-75">
+     </div>
+     <div class="flow-line w-12 h-0.5 bg-gray-200">
+     </div>
+     <div class="flow-dot w-3 h-3 rounded-full bg-gray-300 transform scale-75">
+     </div>
+     <div class="flow-line w-12 h-0.5 bg-gray-200">
+     </div>
+     <div class="flow-dot w-3 h-3 rounded-full bg-gray-300 transform scale-75">
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="relative mt-20">
+   <img alt="Abstract healthcare technology background with medical icons and digital interface" class="bg-image" height="600" src="https://storage.googleapis.com/a1aa/image/a6ff5136-6ff3-45c8-36e8-a1457d1910de.jpg" width="1920"/>
+   <div class="footer-content max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-12 text-gray-300">
+    <div class="flex flex-col space-y-6">
+     <img alt="Ayucare company logo rectangle with teal text on dark background" class="w-[220px] h-[80px] object-contain" height="80" src="images/logoayucare.png" width="220"/>
+     <p class="max-w-xs leading-relaxed text-lg">
+      Ayucare is dedicated to providing innovative healthcare software and mobile solutions to improve patient care and hospital management.
+     </p>
+    </div>
+    <div>
+     <h5 class="text-white font-semibold text-xl mb-6">
+      Useful Links
+     </h5>
+     <ul class="space-y-4 text-gray-400 text-lg">
+      <li>
+       <a class="hover:text-teal-400 transition-colors duration-200" href="index">
+        Home
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-teal-400 transition-colors duration-200" href="aboutus">
+        About Us
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-teal-400 transition-colors duration-200" href="out-patient-management">
+        Services
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-teal-400 transition-colors duration-200" href="contactus">
+        Contact
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-teal-400 transition-colors duration-200" href="#">
+        Privacy Policy
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h5 class="text-white font-semibold text-xl mb-6">
+      Contact Us
+     </h5>
+     <ul class="space-y-6 text-gray-400 text-lg">
+      <li class="flex items-start space-x-4">
+       <i class="fas fa-map-marker-alt mt-1 text-teal-400 text-2xl">
+       </i>
+       <span>
+        123 Health Street,
+        <br/>
+        Wellness City, 456789,
+        <br/>
+        India
+       </span>
+      </li>
+      <li class="flex items-center space-x-4">
+       <i class="fas fa-phone-alt text-teal-400 text-2xl">
+       </i>
+       <a class="hover:text-teal-400 transition-colors duration-200" href="tel:+911234567890">
+        +91 12345 67890
+       </a>
+      </li>
+      <li class="flex items-center space-x-4">
+       <i class="fas fa-envelope text-teal-400 text-2xl">
+       </i>
+       <a class="hover:text-teal-400 transition-colors duration-200" href="mailto:info@ayucare.com">
+        info@ayucare.com
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h5 class="text-white font-semibold text-xl mb-6">
+      Follow Us
+     </h5>
+     <div class="flex space-x-8 text-gray-400 text-3xl">
+      <a aria-label="Facebook" class="hover:text-teal-400 transition-colors duration-200" href="#">
+       <i class="fab fa-facebook-f">
+       </i>
+      </a>
+      <a aria-label="Twitter" class="hover:text-teal-400 transition-colors duration-200" href="#">
+       <i class="fab fa-twitter">
+       </i>
+      </a>
+      <a aria-label="Instagram" class="hover:text-teal-400 transition-colors duration-200" href="#">
+       <i class="fab fa-instagram">
+       </i>
+      </a>
+      <a aria-label="LinkedIn" class="hover:text-teal-400 transition-colors duration-200" href="#">
+       <i class="fab fa-linkedin-in">
+       </i>
+      </a>
+     </div>
+     <p class="mt-12 text-gray-400 text-lg max-w-xs leading-relaxed">
+      © 2024 Ayucare. All rights reserved.
+     </p>
+     <p class="mt-2 text-gray-400 text-lg max-w-xs leading-relaxed">
+      Designed and developed by
+      <a class="text-teal-400 hover:underline" href="https://prodbizsolutions.com" rel="noopener noreferrer" target="_blank">
+       Prodbizsolutions.com
+      </a>
+     </p>
+    </div>
+   </div>
+  </footer>
+  <script>
+   lucide.createIcons();
+
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const title = document.getElementById('section-title');
+          if (title) {
+            title.classList.add('animate');
+          }
+
+          const cards = ['card-1', 'card-2', 'card-3'];
+          cards.forEach((cardId, index) => {
+            const card = document.getElementById(cardId);
+            if (card) {
+              setTimeout(() => {
+                card.classList.add('animate');
+              }, index * 200);
+            }
+          });
+
+          const flowDots = document.querySelectorAll('.flow-dot');
+          const flowLines = document.querySelectorAll('.flow-line');
+
+          flowDots.forEach((dot, index) => {
+            setTimeout(() => {
+              dot.classList.add('animate');
+            }, (index + 1) * 300);
+          });
+
+          flowLines.forEach((line, index) => {
+            setTimeout(() => {
+              line.classList.add('animate');
+            }, (index + 1) * 400);
+          });
+        }
+      });
+    }, observerOptions);
+
+    const section = document.getElementById('how-it-works');
+    if (section) {
+      observer.observe(section);
+    }
+  </script>
  </body>
 </html>

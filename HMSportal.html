@@ -10,48 +10,333 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
    rel="stylesheet"
   />
+
+   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <style>
-   body {
-    font-family: "Crimson Text", serif;
-    background-color: #f7f9fb;
-   }
-   nav {
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    width: 100%;
-  }
-   /* Animation for slide-in from left */
-   @keyframes slideInLeft {
-    0% {
-     opacity: 0;
-     transform: translateX(-50px);
+    body {
+      font-family: "Crimson Text", serif;
+      background-color: #f7f9fb;
     }
-    100% {
-     opacity: 1;
-     transform: translateX(0);
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      width: 100%;
     }
-   }
-   .slide-in-left {
-    animation: slideInLeft 1s ease forwards;
-   }
-   /* Animation for slide-in from right */
-   @keyframes slideInRight {
-    0% {
-     opacity: 0;
-     transform: translateX(50px);
+
+    /* Animation for slide-in from left */
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    100% {
-     opacity: 1;
-     transform: translateX(0);
+
+    .slide-in-left {
+      animation: slideInLeft 1s ease forwards;
     }
-   }
-   .slide-in-right {
-    animation: slideInRight 1s ease forwards;
-   }
+
+    /* Animation for slide-in from right */
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in-right {
+      animation: slideInRight 1s ease forwards;
+    }
   </style>
+
+  <style>
+    .card-3d {
+      transform: translateY(0);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-3d:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-container {
+      transition: all 0.3s ease;
+    }
+
+    .card-3d:hover .icon-container {
+      transform: scale(1.1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .gradient-overlay {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-3d:hover .gradient-overlay {
+      opacity: 1;
+    }
+
+    .decorative-dot {
+      transition: opacity 0.3s ease;
+    }
+
+    .card-3d:hover .decorative-dot {
+      opacity: 1;
+    }
+
+    .title-gradient {
+      background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+
+
+  <style>
+    .circular-card {
+      transform: translateY(0) scale(1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    .circular-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-square {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .circular-card:hover .icon-square {
+      transform: scale(1.1);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .gradient-overlay {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .circular-card:hover .gradient-overlay {
+      opacity: 1;
+    }
+
+    .step-number {
+      transition: all 0.3s ease;
+    }
+
+    .circular-card:hover .step-number {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Animation classes */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-in-up.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-100 {
+      transition-delay: 100ms;
+    }
+
+    .delay-300 {
+      transition-delay: 300ms;
+    }
+
+    .delay-500 {
+      transition-delay: 500ms;
+    }
+
+    /* Process flow indicators */
+    .flow-dot {
+      transition: all 1s ease;
+    }
+
+    .flow-line {
+      transition: all 1s ease;
+    }
+
+    .flow-dot.animate {
+      background-color: #3b82f6;
+      transform: scale(1);
+    }
+
+    .flow-line.animate {
+      background-color: #93c5fd;
+    }
+
+    /* Title gradient */
+    .title-gradient {
+      background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+
+  <style>
+    /* Custom animations for scroll-triggered effects */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animation-delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .animation-delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    .animation-delay-600 {
+      animation-delay: 0.6s;
+    }
+
+    .animation-delay-800 {
+      animation-delay: 0.8s;
+    }
+
+    .animation-delay-1000 {
+      animation-delay: 1.0s;
+    }
+
+    /* Enhanced hover effects */
+    .group:hover .shadow-lg {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Custom Tailwind configuration */
+    .bg-gradient-hover-1:hover {
+      background: linear-gradient(135deg, rgba(101, 186, 193, 0.1), rgba(101, 186, 193, 0.05));
+    }
+
+    .bg-gradient-hover-2:hover {
+      background: linear-gradient(135deg, rgba(124, 197, 183, 0.1), rgba(124, 197, 183, 0.05));
+    }
+
+    .bg-gradient-hover-3:hover {
+      background: linear-gradient(135deg, rgba(221, 129, 45, 0.1), rgba(221, 129, 45, 0.05));
+    }
+
+    .bg-gradient-hover-4:hover {
+      background: linear-gradient(135deg, rgba(0, 98, 158, 0.1), rgba(0, 98, 158, 0.05));
+    }
+
+    .bg-gradient-hover-5:hover {
+      background: linear-gradient(135deg, rgba(31, 151, 220, 0.1), rgba(31, 151, 220, 0.05));
+    }
+  </style>
+
+  <style>
+    /* Custom animations for scroll-triggered effects */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animation-delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .animation-delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    .animation-delay-600 {
+      animation-delay: 0.6s;
+    }
+
+    .animation-delay-800 {
+      animation-delay: 0.8s;
+    }
+
+    .animation-delay-1000 {
+      animation-delay: 1.0s;
+    }
+
+    /* Enhanced hover effects */
+    .group:hover .shadow-lg {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Custom Tailwind configuration */
+    .bg-gradient-hover-1:hover {
+      background: linear-gradient(135deg, rgba(101, 186, 193, 0.1), rgba(101, 186, 193, 0.05));
+    }
+
+    .bg-gradient-hover-2:hover {
+      background: linear-gradient(135deg, rgba(124, 197, 183, 0.1), rgba(124, 197, 183, 0.05));
+    }
+
+    .bg-gradient-hover-3:hover {
+      background: linear-gradient(135deg, rgba(221, 129, 45, 0.1), rgba(221, 129, 45, 0.05));
+    }
+
+    .bg-gradient-hover-4:hover {
+      background: linear-gradient(135deg, rgba(0, 98, 158, 0.1), rgba(0, 98, 158, 0.05));
+    }
+
+    .bg-gradient-hover-5:hover {
+      background: linear-gradient(135deg, rgba(31, 151, 220, 0.1), rgba(31, 151, 220, 0.05));
+    }
+  </style>
+  
+
  </head>
- <body class="bg-[#f7f9fb]">
+
+
+ <body>
   <nav class="bg-white shadow-md sticky top-0 z-50">
    <div
     class="max-w-[1280px] mx-auto flex items-center justify-between h-20 px-4 sm:px-6 md:px-8"
@@ -193,7 +478,7 @@
    >
     <ul class="flex flex-col gap-4 text-lg select-none">
      <li>
-      <a class="block w-full" href="#" tabindex="0">Home</a>
+      <a class="block w-full" href="index" tabindex="0">Home</a>
      </li>
      <li>
       <a class="block w-full" href="aboutus" tabindex="0">About</a>
@@ -377,493 +662,770 @@
    });
   </script>
 <!--nav end-->
-   <style>
-        .card {
-            position: relative;
-            overflow: hidden;
-            transition: background-color 0.3s ease;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: -100%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* background-color: #00629e33; */
-            z-index: 0;
-            transition: top 0.4s ease;
-        }
-
-        .card.clicked h2 {
-            color: white !important;
-        }
-
-        .card.clicked p {
-            color: #333;
-        }
 
 
-        .card:hover::before {
-            top: 0;
-        }
-
-        .card:hover .icon {
-            transform: scale(1.2);
-        }
-
-        .icon {
-            transition: transform 0.3s ease;
-        }
-
-        .card.clicked {
-            /* background-color: #00629e33; */
-            background: rgb(221, 129, 45);
-        }
-    </style>
-  <style>
+ <style>
    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
     body {
       font-family: 'Inter', sans-serif;
     }
   </style>
-<!--nav end here-->
-  <style>
-    .card {
-      position: relative;
-      overflow: hidden;
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-    }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      top: -100%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      transition: top 0.4s ease;
-    }
 
-    .card.clicked h2 {
-      color: white !important;
-    }
+    <!-- HMS Portal Promo Banner -->
+  <section class="bg-[#f0f9ff] py-20 px-6 md:px-16">
+    <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
 
-    .card.clicked p {
-      color: #333;
-    }
+      <!-- Left: Text Content -->
+      <div class="max-w-xl text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl font-bold text-[#00629e] leading-tight mb-6">
+          Simplify Hospital Management with <span class="text-[#dd812d]">Ayucare HMS Portal</span>
+        </h1>
+        <p class="text-lg text-gray-700 mb-6">
+          Access medical records, manage appointments, prescriptions, bills, radiology reports and lab reports — all in
+          one secure, centralized platform for patients and hospital staff.
+        </p>
+        <button class="bg-[#1f97dc] text-white font-semibold px-6 py-3 rounded-full hover:bg-[#00629e] transition">
+          Request a Demo
+        </button>
+      </div>
 
-    .card:hover::before {
-      top: 0;
-    }
-
-    .card:hover .icon {
-      transform: scale(1.2);
-    }
-
-    .icon {
-      transition: transform 0.3s ease;
-    }
-
-    .card.clicked {
-      background: rgb(221, 129, 45);
-    }
-
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
-    body {
-      font-family: "Inter", sans-serif;
-    }
-  </style>
-
-<body class="bg-[#e6f0f4] text-[#00629e] min-h-screen">
-  <!-- Banner -->
-  <section
-    class="relative w-full h-[300px] md:h-[350px] lg:h-[400px] flex items-center justify-center text-center"
-  >
-    <div class="absolute inset-0">
-      <img
-        src="images/close-up-nurse-holding-typing-tablet-standing-stomatologic-clinic-while-doctor-is-working-with-patient-background-using-monitor-with-chroma-key-izolated-pc-key-mockup-pc-display.jpg"
-        alt="Portal and App Banner"
-        class="w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-black opacity-40"></div>
-    </div>
-    <div class="relative z-10 px-4">
-      <h1
-        class="text-[#00629e] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
-      >
-        Portal & App
-      </h1>
+      <!-- Right: 3D Illustration -->
+      <div class="w-full md:w-1/2">
+        <img src="images/Smart-Hospital-HMS-Laravel-Hospital-Management-System.avif"
+          alt="HMS 3D Illustration" class="w-full max-w-md mx-auto md:mx-0 animate-fade-in-up drop-shadow-lg" />
+      </div>
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-6 bg-gray-50 sm:px-6 lg:px-0 py-10 text-gray-800">
-    <h1 class="text-3xl lg:text-4xl font-bold text-[#00629e] text-center mb-2">
-      Portal & App Features
-    </h1>
-    <p class="text-center text-gray-600 mb-10 text-sm lg:text-base">
-      Comprehensive digital platform for patients and doctors to connect, manage health data, and communicate seamlessly.
+
+  <section class="py-16 px-4 bg-gradient-to-br from-gray-50 to-white text-gray-800">
+    <h2 class="text-4xl font-bold text-center mb-4 title-gradient"
+      style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);">
+      What You Can Do with Our HMS Portal
+    </h2>
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      Discover powerful features designed to streamline your healthcare experience
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="cardContainer">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <!-- Medical Records Card -->
       <div
-        class="card bg-white p-6 rounded-lg shadow relative clicked"
-        onclick="showInfo(0)"
-      >
-        <div class="relative z-10">
-          <div class="icon text-4xl text-[#00629e] mb-3">💬</div>
-          <h2 class="text-xl font-semibold text-[#00629e] mb-2">
-            Secure Chat
-          </h2>
-          <p class="text-sm text-gray-600">
-            Real-time messaging between patients and doctors for quick consultations.
+        class="card-3d bg-blue-50 border-2 border-blue-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+        <div class="gradient-overlay absolute inset-0 rounded-2xl"></div>
+
+        <div
+          class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+          <i data-lucide="file-text" class="w-10 h-10 text-blue-600"></i>
+        </div>
+
+        <div class="text-center relative z-10">
+          <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+            Access Medical Records
+          </h3>
+          <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+            View previous diagnoses, prescriptions, lab and radiology reports in one place.
           </p>
         </div>
+
+        <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60"></div>
+        <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40"></div>
       </div>
 
-      <div class="card bg-white p-6 rounded-lg shadow relative" onclick="showInfo(1)">
-        <div class="relative z-10">
-          <div class="icon text-4xl text-[#00629e] mb-3">📅</div>
-          <h2 class="text-xl font-semibold text-[#00629e] mb-2">
-            Appointment Scheduling
-          </h2>
-          <p class="text-sm text-gray-600">
-            Easy booking and management of appointments through the portal and app.
+      <!-- Appointments Card -->
+      <div
+        class="card-3d bg-green-50 border-2 border-green-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+        <div class="gradient-overlay absolute inset-0 rounded-2xl"></div>
+
+        <div
+          class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+          <i data-lucide="calendar" class="w-10 h-10 text-green-600"></i>
+        </div>
+
+        <div class="text-center relative z-10">
+          <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+            Book Appointments
+          </h3>
+          <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+            Schedule and manage outpatient or follow-up visits anytime, anywhere.
           </p>
         </div>
+
+        <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60"></div>
+        <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40"></div>
       </div>
 
-      <div class="card bg-white p-6 rounded-lg shadow relative" onclick="showInfo(2)">
-        <div class="relative z-10">
-          <div class="icon text-4xl text-[#00629e] mb-3">📊</div>
-          <h2 class="text-xl font-semibold text-[#00629e] mb-2">
-            Health Data Tracking
-          </h2>
-          <p class="text-sm text-gray-600">
-            Monitor vitals, lab results, and medication adherence in one place.
+      <!-- Billing Card -->
+      <div
+        class="card-3d bg-purple-50 border-2 border-purple-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+        <div class="gradient-overlay absolute inset-0 rounded-2xl"></div>
+
+        <div
+          class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+          <i data-lucide="credit-card" class="w-10 h-10 text-purple-600"></i>
+        </div>
+
+        <div class="text-center relative z-10">
+          <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+            Billing & Payments
+          </h3>
+          <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+            Review bills and securely pay online without standing in queues.
           </p>
         </div>
+
+        <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60"></div>
+        <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40"></div>
       </div>
 
-      <div class="card bg-white p-6 rounded-lg shadow relative" onclick="showInfo(3)">
-        <div class="relative z-10">
-          <div class="icon text-4xl text-[#00629e] mb-3">🔔</div>
-          <h2 class="text-xl font-semibold text-[#00629e] mb-2">
-            Notifications & Reminders
-          </h2>
-          <p class="text-sm text-gray-600">
-            Automated alerts for appointments, medication, and health checkups.
+      <!-- Lab & Radiology Card -->
+      <div
+        class="card-3d bg-rose-50 border-2 border-rose-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+        <div class="gradient-overlay absolute inset-0 rounded-2xl"></div>
+
+        <div
+          class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+          <i data-lucide="activity" class="w-10 h-10 text-rose-600"></i>
+        </div>
+
+        <div class="text-center relative z-10">
+          <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+            Lab & Radiology Integration
+          </h3>
+          <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+            Real-time access to lab test results and radiology images and interpretations.
           </p>
         </div>
+
+        <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60"></div>
+        <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40"></div>
       </div>
-    </div>
 
-    <!-- Info Sections -->
-    <div id="infoSections" class="mt-8 space-y-6 text-sm lg:text-base"></div>
+      <!-- Prescription Card -->
+      <div
+        class="card-3d bg-amber-50 border-2 border-amber-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+        <div class="gradient-overlay absolute inset-0 rounded-2xl"></div>
 
-    <!-- Related Images & Steps Section -->
-    <section class="mt-20 max-w-6xl mx-auto">
-      <h2 class="text-3xl font-semibold text-[#00629e] mb-10 text-center">
-        How It Works
-      </h2>
-      <div class="flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0 items-center justify-center">
-        <div class="md:w-1/2">
-          <img
-            src="images/laboratory img2.jpeg"
-            alt="Portal Dashboard showing patient data and appointments"
-            class="rounded-lg shadow-lg w-full object-cover"
-            height="350"
-            width="500"
-          />
+        <div
+          class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+          <i data-lucide="pill" class="w-10 h-10 text-amber-600"></i>
         </div>
-        <div class="md:w-1/2 space-y-6 text-[#005a6e]">
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Step 1: Patient Registration & Profile</h3>
-            <p>
-              Patients register on the portal or app, creating a secure profile to manage their health data and appointments.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Step 2: Appointment Booking & Scheduling</h3>
-            <p>
-              Patients can easily book appointments with doctors, view availability, and receive automated reminders.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Step 3: Secure Chat & Consultations</h3>
-            <p>
-              Real-time chat allows patients and doctors to communicate quickly, share reports, and get advice without delays.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Step 4: Health Data Tracking & Notifications</h3>
-            <p>
-              Patients track vitals and lab results, while the system sends reminders for medications and health checkups.
-            </p>
-          </div>
+
+        <div class="text-center relative z-10">
+          <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+            Prescription Tracking
+          </h3>
+          <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+            Track past prescriptions and reorders, reducing errors and improving care.
+          </p>
         </div>
-      </div>
-    </section>
-  </div>
 
-  <section class="pt-5 px-6 pb-5 mt-20 mb-20">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div
-        class="rounded-lg border-2 border-[#00629e] p-6 shadow-md text-center bg-white hover:bg-[#dd812d] transition-colors duration-300 cursor-pointer"
-      >
-        <div class="text-[52px] text-[#00629e] font-bold mb-2">01</div>
-        <p class="font-bold text-[18px] sm:text-[16px] md:text-[20px]">Secure Chat</p>
+        <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60"></div>
+        <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40"></div>
       </div>
 
+      <!-- Mobile Portal Card -->
       <div
-        class="p-6 border-2 border-[#00629e] rounded-lg shadow-md text-center bg-white hover:bg-[#dd812d] transition-colors duration-300 cursor-pointer"
-      >
-        <div class="text-[52px] text-[#00629e] font-bold mb-2">02</div>
-        <p class="font-bold text-[18px] sm:text-[16px] md:text-[20px]">Appointment Scheduling</p>
-      </div>
+        class="card-3d bg-cyan-50 border-2 border-cyan-100 p-8 rounded-2xl cursor-pointer relative overflow-hidden group">
+        <div class="gradient-overlay absolute inset-0 rounded-2xl"></div>
 
-      <div
-        class="border-2 border-[#00629e] p-6 rounded-lg shadow-md text-center bg-white hover:bg-[#dd812d] transition-colors duration-300 cursor-pointer"
-      >
-        <div class="text-[52px] text-[#00629e] font-bold mb-2">03</div>
-        <p class="font-bold text-[18px] sm:text-[16px] md:text-[20px]">Health Data Tracking</p>
-      </div>
+        <div
+          class="icon-container w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center relative z-10">
+          <i data-lucide="smartphone" class="w-10 h-10 text-cyan-600"></i>
+        </div>
 
-      <div
-        class="border-2 border-[#00629e] p-6 rounded-lg shadow-md text-center bg-white hover:bg-[#dd812d] transition-colors duration-300 cursor-pointer"
-      >
-        <div class="text-[52px] text-[#00629e] font-bold mb-2">04</div>
-        <p class="font-bold text-[18px] sm:text-[16px] md:text-[20px]">Notifications & Reminders</p>
+        <div class="text-center relative z-10">
+          <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+            Mobile-Friendly Portal
+          </h3>
+          <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+            Access the portal on-the-go via smartphones, tablets, or desktops.
+          </p>
+        </div>
+
+        <div class="decorative-dot absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-60"></div>
+        <div class="decorative-dot absolute bottom-4 left-4 w-1 h-1 bg-white rounded-full opacity-40"></div>
       </div>
     </div>
   </section>
 
   <script>
-    const cardData = [
-      {
-        title: "Secure Chat",
-        description:
-          "Real-time, encrypted messaging between patients and doctors to facilitate quick and confidential consultations.",
-        useCase: `
-      <ul class="list-disc pl-5 mt-2 text-gray-600">
-        <li><strong>Instant Communication:</strong> Patients can ask questions and get timely responses from their healthcare providers.</li>
-        <li><strong>Group Chats:</strong> Support for family members or care teams to join conversations.</li>
-        <li><strong>Media Sharing:</strong> Share images, reports, and prescriptions securely within the chat.</li>
-      </ul>
-      <p class="mt-3">
-        For example, a patient can send a photo of a rash to their doctor and receive advice without an in-person visit.</p>
-    `,
-        img: "./images/portal1.png",
-      },
-      {
-        title: "Appointment Scheduling",
-        description:
-          "User-friendly interface for booking, rescheduling, and canceling appointments with reminders and calendar sync.",
-        useCase: `
-      <ul class="list-disc pl-5 mt-2 text-gray-600">
-        <li><strong>Real-Time Availability:</strong> View doctor availability and book slots instantly.</li>
-        <li><strong>Automated Reminders:</strong> SMS and app notifications reduce no-shows.</li>
-        <li><strong>Multi-Channel Booking:</strong> Book via portal or mobile app seamlessly.</li>
-      </ul>
-      <p class="mt-3">For example, a patient can book a follow-up appointment after a consultation directly from the app.</p>
-    `,
-        img: "./images/portal2.jpg",
-      },
-      {
-        title: "Health Data Tracking",
-        description:
-          "Centralized dashboard to monitor vitals, lab results, medication adherence, and lifestyle data.",
-        useCase: `
-      <ul class="list-disc pl-5 mt-2 text-gray-600">
-        <li><strong>Vitals Monitoring:</strong> Track blood pressure, glucose, weight, and more.</li>
-        <li><strong>Lab Results:</strong> View and interpret lab reports with doctor comments.</li>
-        <li><strong>Medication Logs:</strong> Record and remind medication intake for better compliance.</li>
-      </ul>
-      <p class="mt-3">For example, a diabetic patient can track daily glucose levels and share reports with their doctor.</p>
-    `,
-        img: "./images/portal3.png",
-      },
-      {
-        title: "Notifications & Reminders",
-        description:
-          "Automated alerts for upcoming appointments, medication schedules, and health checkups to keep patients engaged.",
-        useCase: `
-      <ul class="list-disc pl-5 mt-2 text-gray-600">
-        <li><strong>Appointment Alerts:</strong> Remind patients of upcoming visits to reduce missed appointments.</li>
-        <li><strong>Medication Reminders:</strong> Timely notifications to improve adherence.</li>
-        <li><strong>Health Tips:</strong> Personalized messages to encourage healthy habits.</li>
-      </ul>
-      <p class="mt-3">For example, patients receive daily medication reminders and monthly wellness tips via the app.</p>
-    `,
-        img: "./images/portal4.png",
-      },
-    ];
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
 
-    window.onload = () => showInfo(0);
 
-    function showInfo(index) {
-      document.querySelectorAll(".card").forEach((card, i) => {
-        card.classList.remove("clicked");
-        if (i === index) card.classList.add("clicked");
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-100  overflow-hidden">
+    <div class="max-w-5xl mx-auto">
+      <!-- Title with fade-in animation -->
+      <h2 id="section-title" class="fade-in-up text-4xl font-bold text-center mb-16 text-gray-800 title-gradient"
+        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);">
+        How It Works
+      </h2>
+
+      <!-- Cards Grid -->
+      <div class="grid md:grid-cols-3 gap-12 text-center">
+        <!-- Register/Login Card -->
+        <div id="card-1" class="fade-in-up delay-100">
+          <!-- Circular Card Container -->
+          <div
+            class="circular-card bg-blue-100 w-48 h-48 mx-auto rounded-full flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group">
+            <div class="gradient-overlay absolute inset-0 rounded-full"></div>
+
+            <!-- Square Icon Background -->
+            <div
+              class="icon-square bg-blue-500 w-20 h-20 rounded-xl flex items-center justify-center mb-4 relative z-10">
+              <i data-lucide="user-plus" class="w-10 h-10 text-white"></i>
+            </div>
+
+            <!-- Step Number -->
+            <div
+              class="step-number absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm font-bold text-gray-600 shadow-md">
+              1
+            </div>
+          </div>
+
+          <!-- Content Below Card -->
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Register/Login</h3>
+            <p class="text-gray-600 leading-relaxed max-w-xs mx-auto">
+              Create an account or log in using your registered credentials.
+            </p>
+          </div>
+        </div>
+
+        <!-- Explore Dashboard Card -->
+        <div id="card-2" class="fade-in-up delay-300">
+          <!-- Circular Card Container -->
+          <div
+            class="circular-card bg-green-100 w-48 h-48 mx-auto rounded-full flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group">
+            <div class="gradient-overlay absolute inset-0 rounded-full"></div>
+
+            <!-- Square Icon Background -->
+            <div
+              class="icon-square bg-green-500 w-20 h-20 rounded-xl flex items-center justify-center mb-4 relative z-10">
+              <i data-lucide="folder-open" class="w-10 h-10 text-white"></i>
+            </div>
+
+            <!-- Step Number -->
+            <div
+              class="step-number absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm font-bold text-gray-600 shadow-md">
+              2
+            </div>
+          </div>
+
+          <!-- Content Below Card -->
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Explore Your Dashboard</h3>
+            <p class="text-gray-600 leading-relaxed max-w-xs mx-auto">
+              Get instant access to appointments, reports, and billing info.
+            </p>
+          </div>
+        </div>
+
+        <!-- Book & Pay Card -->
+        <div id="card-3" class="fade-in-up delay-500">
+          <!-- Circular Card Container -->
+          <div
+            class="circular-card bg-purple-100 w-48 h-48 mx-auto rounded-full flex flex-col items-center justify-center cursor-pointer relative overflow-hidden group">
+            <div class="gradient-overlay absolute inset-0 rounded-full"></div>
+
+            <!-- Square Icon Background -->
+            <div
+              class="icon-square bg-purple-500 w-20 h-20 rounded-xl flex items-center justify-center mb-4 relative z-10">
+              <i data-lucide="credit-card" class="w-10 h-10 text-white"></i>
+            </div>
+
+            <!-- Step Number -->
+            <div
+              class="step-number absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm font-bold text-gray-600 shadow-md">
+              3
+            </div>
+          </div>
+
+          <!-- Content Below Card -->
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Book & Pay</h3>
+            <p class="text-gray-600 leading-relaxed max-w-xs mx-auto">
+              Book appointments and make payments through secure gateways.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process Flow Indicators -->
+      <div class="flex justify-center items-center mt-12 space-x-4">
+        <div class="flow-dot w-3 h-3 rounded-full bg-gray-300 transform scale-75"></div>
+        <div class="flow-line w-12 h-0.5 bg-gray-200"></div>
+        <div class="flow-dot w-3 h-3 rounded-full bg-gray-300 transform scale-75"></div>
+        <div class="flow-line w-12 h-0.5 bg-gray-200"></div>
+        <div class="flow-dot w-3 h-3 rounded-full bg-gray-300 transform scale-75"></div>
+      </div>
+    </div>
+  </section>
+
+
+    <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate title
+          const title = document.getElementById('section-title');
+          if (title) {
+            title.classList.add('animate');
+          }
+
+          // Animate cards with staggered delays
+          const cards = ['card-1', 'card-2', 'card-3'];
+          cards.forEach((cardId, index) => {
+            const card = document.getElementById(cardId);
+            if (card) {
+              setTimeout(() => {
+                card.classList.add('animate');
+              }, index * 200);
+            }
+          });
+
+          // Animate flow indicators
+          const flowDots = document.querySelectorAll('.flow-dot');
+          const flowLines = document.querySelectorAll('.flow-line');
+
+          flowDots.forEach((dot, index) => {
+            setTimeout(() => {
+              dot.classList.add('animate');
+            }, (index + 1) * 300);
+          });
+
+          flowLines.forEach((line, index) => {
+            setTimeout(() => {
+              line.classList.add('animate');
+            }, (index + 1) * 400);
+          });
+        }
       });
+    }, observerOptions);
 
-      const container = document.getElementById("infoSections");
-      container.innerHTML = "";
-
-      const data = cardData[index];
-      const html = `
-        <div class="bg-white rounded-lg shadow p-6">
-          <h3 class="text-2xl font-semibold text-[#00629e]">${data.title}</h3>
-          <p class="mt-2 text-gray-700">${data.description}</p>
-          <h4 class="mt-4 font-semibold text-gray-700">Use Case Example</h4>
-          <div class="text-gray-600 mt-1">${data.useCase}</div>
-          <img src="${data.img}" alt="${data.title}" class="mt-4 w-full rounded" />
-        </div>`;
-      container.innerHTML = html;
-
-      const selectedCard = document.querySelectorAll(".card")[index];
-      setTimeout(() =>
-        selectedCard.scrollIntoView({ behavior: "smooth", block: "center" }),
-        100
-      );
+    // Observe the section
+    const section = document.getElementById('how-it-works');
+    if (section) {
+      observer.observe(section);
     }
   </script>
 
-  <footer class="bg-gray-900 text-gray-300 mt-20 footer-bg relative">
-      <img
-  src="images/close-up-nurse-holding-typing-tablet-standing-stomatologic-clinic-while-doctor-is-working-with-patient-background-using-monitor-with-chroma-key-izolated-pc-key-mockup-pc-display.jpg"
-  alt="Abstract healthcare technology background"
-  class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none"
-/>
-      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 footer-content grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div class="flex flex-col space-y-6">
-          <img
-            alt="Ayucare company logo rectangle with teal text on dark background"
-            class="w-[220px] h-[80px] object-contain"
-            height="80"
-            src="images/logoayucare.png"
-            width="220"
-          />
-          <p class="text-gray-300 max-w-xs leading-relaxed text-lg">
-            Ayucare is dedicated to providing innovative healthcare software and
-            mobile solutions to improve patient care and hospital management.
-          </p>
-        </div>
-        <div>
-          <h5 class="text-white font-semibold text-xl mb-6">Useful Links</h5>
-          <ul class="space-y-4 text-gray-400 text-lg">
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="index"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="aboutus"
-                >About Us</a
-              >
-            </li>
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="out-patient-management"
-                >Services</a
-              >
-            </li>
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="contactus"
-                >Contact</a
-              >
-            </li>
-            <li>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="#"
-                >Privacy Policy</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h5 class="text-white font-semibold text-xl mb-6">Contact Us</h5>
-          <ul class="space-y-6 text-gray-400 text-lg">
-            <li class="flex items-start space-x-4">
-              <i class="fas fa-map-marker-alt mt-1 text-teal-400 text-2xl"></i>
-              <span>
-                123 Health Street,<br />
-                Wellness City, 456789,<br />
-                India
-              </span>
-            </li>
-            <li class="flex items-center space-x-4">
-              <i class="fas fa-phone-alt text-teal-400 text-2xl"></i>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="tel:+911234567890"
-                >+91 12345 67890</a
-              >
-            </li>
-            <li class="flex items-center space-x-4">
-              <i class="fas fa-envelope text-teal-400 text-2xl"></i>
-              <a
-                class="hover:text-teal-400 transition-colors duration-200"
-                href="mailto:info@ayucare.com"
-                >info@ayucare.com</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h5 class="text-white font-semibold text-xl mb-6">Follow Us</h5>
-          <div class="flex space-x-8 text-gray-400 text-3xl">
-            <a
-              aria-label="Facebook"
-              class="hover:text-teal-400 transition-colors duration-200"
-              href="#"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a
-              aria-label="Twitter"
-              class="hover:text-teal-400 transition-colors duration-200"
-              href="#"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a
-              aria-label="Instagram"
-              class="hover:text-teal-400 transition-colors duration-200"
-              href="#"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a
-              aria-label="LinkedIn"
-              class="hover:text-teal-400 transition-colors duration-200"
-              href="#"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
+
+
+
+
+
+
+
+
+   <section class="py-16 px-4 bg-white text-gray-800 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <!-- Section Title -->
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800"
+        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);">A Unified Platform for Patients and Providers</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        Our HMS Portal bridges the gap between patients and hospitals by providing secure, real-time, and centralized
+        access to all healthcare data.
+      </p>
+
+
+      <!-- Grid -->
+      <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+
+        <!-- For Patients -->
+        <div
+          class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-lg hover:bg-transparent hover:border-2 hover:border-blue-400 hover:shadow-2xl transition-all duration-700 cursor-pointer relative overflow-hidden group">
+          <!-- Icon Background -->
+          <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+            <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5"
+              viewBox="0 0 24 24">
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z" />
+            </svg>
           </div>
-          <p class="mt-12 text-gray-400 text-lg max-w-xs leading-relaxed">
-            © 2024 Ayucare. All rights reserved.
-          </p>
-          <p class="mt-2 text-gray-400 text-lg max-w-xs leading-relaxed">
-            Designed and developed by
-            <a
-              class="text-teal-400 hover:underline"
-              href="https://prodbizsolutions.com"
-              rel="noopener noreferrer"
-              target="_blank"
-              >Prodbizsolutions.com</a
-            >
-          </p>
+
+          <!-- Header -->
+          <div class="flex items-center mb-6 relative z-10">
+            <div
+              class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-semibold text-blue-700 group-hover:text-blue-800 transition-colors">
+              For Patients
+            </h3>
+          </div>
+
+          <!-- List -->
+          <ul class="space-y-4 text-gray-700 group-hover:text-gray-800 relative z-10 text-base leading-relaxed">
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-blue-200 flex items-center justify-center rounded-lg mr-3">
+                📄
+              </span>
+              Access complete medical history anytime
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-blue-200 flex items-center justify-center rounded-lg mr-3">
+                📅
+              </span>
+              Book and manage appointments online
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-blue-200 flex items-center justify-center rounded-lg mr-3">
+                📥
+              </span>
+              Download lab reports and prescriptions
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-blue-200 flex items-center justify-center rounded-lg mr-3">
+                🔔
+              </span>
+              Receive automated alerts for appointments and test results
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-blue-200 flex items-center justify-center rounded-lg mr-3">
+                💳
+              </span>
+              Make secure online payments from home
+            </li>
+          </ul>
+        </div>
+
+        <!-- For Doctors -->
+        <div
+          class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl shadow-lg hover:bg-transparent hover:border-2 hover:border-orange-400 hover:shadow-2xl transition-all duration-700 cursor-pointer relative overflow-hidden group">
+          <!-- Icon Background -->
+          <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+            <svg class="w-16 h-16 text-orange-600" fill="none" stroke="currentColor" stroke-width="1.5"
+              viewBox="0 0 24 24">
+              <path d="M12 4v16m8-8H4" />
+            </svg>
+          </div>
+
+          <!-- Header -->
+          <div class="flex items-center mb-6 relative z-10">
+            <div
+              class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center mr-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 4v16m8-8H4" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-semibold text-orange-700 group-hover:text-orange-800 transition-colors">
+              For Doctors & Hospital Staff
+            </h3>
+          </div>
+
+          <!-- List -->
+          <ul class="space-y-4 text-gray-700 group-hover:text-gray-800 relative z-10 text-base leading-relaxed">
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-orange-200 flex items-center justify-center rounded-lg mr-3">
+                🩺
+              </span>
+              Quick access to patient history and diagnostics
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-orange-200 flex items-center justify-center rounded-lg mr-3">
+                📋
+              </span>
+              Streamlined appointment and OP/IP schedules
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-orange-200 flex items-center justify-center rounded-lg mr-3">
+                🧾
+              </span>
+              Automatic billing and prescription generation
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-orange-200 flex items-center justify-center rounded-lg mr-3">
+                💬
+              </span>
+              Improved patient communication and follow-ups
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 bg-orange-200 flex items-center justify-center rounded-lg mr-3">
+                🗂️
+              </span>
+              Centralized system to manage inventory, beds, labs, and radiology
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+   <!-- Why Choose HMS Portal - Icon Cards Section -->
+  <section class="py-16 px-4 text-center bg-gradient-to-br from-blue-50 to-indigo-100 ">
+    <h2 class="text-3xl md:text-4xl font-bold text-[#000] mb-12" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);">
+      Why Choose Our HMS Portal?</h2>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+
+      <!-- Patient Engagement -->
+      <div
+        class="group flex flex-col items-center transform transition-all duration-500 hover:-translate-y-4 animate-fade-in-up">
+        <div
+          class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-[#65bac1] to-[#4a9ca3] rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:shadow-2xl group-hover:scale-110">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-base font-[500] text-[#444]">
+          Improved Patient<br>Engagement & Transparency
+        </h3>
+      </div>
+
+      <!-- Fast Access -->
+      <div
+        class="group flex flex-col items-center transform transition-all duration-500 hover:-translate-y-4 animate-fade-in-up animation-delay-200">
+        <div
+          class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-[#7cc5b7] to-[#5ba89a] rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:shadow-2xl group-hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h13m0 0l-4-4m4 4l-4 4" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-base font-[500] text-[#444]">
+          Faster Access to<br>Medical Information
+        </h3>
+      </div>
+
+      <!-- Security -->
+      <div
+        class="group flex flex-col items-center transform transition-all duration-500 hover:-translate-y-4 animate-fade-in-up animation-delay-400">
+        <div
+          class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-[#dd812d] to-[#b8691f] rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:shadow-2xl group-hover:scale-110">
+          <!-- Replace image with SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" class="w-12 h-12 md:w-14 md:h-14">
+            <path
+              d="M12 2C8 4 4 5 4 10c0 5.5 4.5 10 8 12 3.5-2 8-6.5 8-12 0-5-4-6-8-8zm1 14h-2v-3H8v-2h3V8h2v3h3v2h-3v3z" />
+          </svg>
+        </div>
+
+
+        <h3 class="text-sm md:text-base font-[500] text-[#444]">
+          Secure and Compliant<br>with Healthcare Standards
+        </h3>
+      </div>
+
+      <!-- Administrative -->
+      <div
+        class="group flex flex-col items-center transform transition-all duration-500 hover:-translate-y-4 animate-fade-in-up animation-delay-600">
+        <div
+          class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-[#00629e] to-[#004a73] rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:shadow-2xl group-hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h12m-9 5h9" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-base font-[500] text-[#444]">
+          Reduces Administrative<br>Burden for Hospitals
+        </h3>
+      </div>
+
+      <!-- Workflow -->
+      <div
+        class="group flex flex-col items-center transform transition-all duration-500 hover:-translate-y-4 animate-fade-in-up animation-delay-800">
+        <div
+          class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-[#1f97dc] to-[#1a7bb8] rounded-full flex items-center justify-center mb-4 shadow-lg group-hover:shadow-2xl group-hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16m-7 4h7m-7 4h7" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-base font-[500] text-[#444]">
+          Streamlined Hospital<br>Workflow and Efficiency
+        </h3>
+      </div>
+
+    </div>
+  </section>
+
+
+
+    <section class="py-12 md:py-20 px-4 md:px-16 bg-white">
+    <h2 class="text-2xl md:text-4xl font-bold text-center text-[#000] mb-8 md:mb-12"
+      style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);">
+      Stay Connected with Smart Health Tools
+    </h2>
+
+    <div class="max-w-7xl mx-auto space-y-10">
+      <!-- Mobile Application Card -->
+      <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+        <div class="flex flex-col md:flex-row">
+          <!-- Image -->
+          <div
+            class="md:w-1/3 bg-gradient-to-br from-[#f4f6f8] to-[#e8eef3] p-6 flex items-center justify-center">
+            <img src="./images/mobileaccess.png"
+              alt="Mobile App" class="w-[100%] h-[100%] object-cover rounded-xl" />
+          </div>
+          <!-- Content -->
+          <div class="md:w-2/3 p-6 md:p-8 lg:p-12">
+            <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-[#00629e] mb-4 md:mb-6">
+              Mobile Application
+            </h3>
+            <ul class="space-y-3 md:space-y-4 text-gray-700 text-sm md:text-base">
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#00629e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>All-in-one platform for patients to manage health records securely</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#00629e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Push notifications for appointments, medicines, and lab results</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#00629e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Supports secure payments, prescription tracking, and report downloads</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#00629e] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Real-time sync across devices for seamless healthcare management</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </footer>
+
+      <!-- WhatsApp Integration Card -->
+      <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+        <div class="flex flex-col-reverse md:flex-row">
+          <!-- Content -->
+          <div class="md:w-2/3 p-6 md:p-8 lg:p-12">
+            <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-[#dd812d] mb-4 md:mb-6">
+              WhatsApp Integration
+            </h3>
+            <ul class="space-y-3 md:space-y-4 text-gray-700 text-sm md:text-base">
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#dd812d] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Smart chatbot assistant for booking appointments and answering queries</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#dd812d] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Instant delivery of lab reports, prescription reminders, and test alerts</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#dd812d] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>24/7 accessible from mobile for better patient engagement</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-2 h-2 bg-[#dd812d] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Multi-language support for diverse patient communication needs</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Image -->
+          <div
+            class="md:w-1/3 bg-gradient-to-br from-[#f4f6f8] to-[#e8eef3] p-6 md:p-8 flex items-center justify-center">
+            <img src="./images/whatsappintegrationimage.jpg" alt="WhatsApp"
+              class="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <footer class="bg-gray-900 text-gray-300 mt-20 footer-bg relative">
+    <img
+      src="images/close-up-nurse-holding-typing-tablet-standing-stomatologic-clinic-while-doctor-is-working-with-patient-background-using-monitor-with-chroma-key-izolated-pc-key-mockup-pc-display.jpg"
+      alt="Abstract healthcare technology background"
+      class="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none" />
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 footer-content grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div class="flex flex-col space-y-6">
+        <img alt="Ayucare company logo rectangle with teal text on dark background"
+          class="w-[220px] h-[80px] object-contain" height="80" src="images/logoayucare.png" width="220" />
+        <p class="text-gray-300 max-w-xs leading-relaxed text-lg">
+          Ayucare is dedicated to providing innovative healthcare software and
+          mobile solutions to improve patient care and hospital management.
+        </p>
+      </div>
+      <div>
+        <h5 class="text-white font-semibold text-xl mb-6">Useful Links</h5>
+        <ul class="space-y-4 text-gray-400 text-lg">
+          <li>
+            <a class="hover:text-teal-400 transition-colors duration-200" href="index">Home</a>
+          </li>
+          <li>
+            <a class="hover:text-teal-400 transition-colors duration-200" href="aboutus">About Us</a>
+          </li>
+          <li>
+            <a class="hover:text-teal-400 transition-colors duration-200" href="out-patient-management">Services</a>
+          </li>
+          <li>
+            <a class="hover:text-teal-400 transition-colors duration-200" href="contactus">Contact</a>
+          </li>
+          <li>
+            <a class="hover:text-teal-400 transition-colors duration-200" href="#">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-white font-semibold text-xl mb-6">Contact Us</h5>
+        <ul class="space-y-6 text-gray-400 text-lg">
+          <li class="flex items-start space-x-4">
+            <i class="fas fa-map-marker-alt mt-1 text-teal-400 text-2xl"></i>
+            <span>
+              123 Health Street,<br />
+              Wellness City, 456789,<br />
+              India
+            </span>
+          </li>
+          <li class="flex items-center space-x-4">
+            <i class="fas fa-phone-alt text-teal-400 text-2xl"></i>
+            <a class="hover:text-teal-400 transition-colors duration-200" href="tel:+911234567890">+91 12345 67890</a>
+          </li>
+          <li class="flex items-center space-x-4">
+            <i class="fas fa-envelope text-teal-400 text-2xl"></i>
+            <a class="hover:text-teal-400 transition-colors duration-200"
+              href="mailto:info@ayucare.com">info@ayucare.com</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-white font-semibold text-xl mb-6">Follow Us</h5>
+        <div class="flex space-x-8 text-gray-400 text-3xl">
+          <a aria-label="Facebook" class="hover:text-teal-400 transition-colors duration-200" href="#"><i
+              class="fab fa-facebook-f"></i></a>
+          <a aria-label="Twitter" class="hover:text-teal-400 transition-colors duration-200" href="#"><i
+              class="fab fa-twitter"></i></a>
+          <a aria-label="Instagram" class="hover:text-teal-400 transition-colors duration-200" href="#"><i
+              class="fab fa-instagram"></i></a>
+          <a aria-label="LinkedIn" class="hover:text-teal-400 transition-colors duration-200" href="#"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p class="mt-12 text-gray-400 text-lg max-w-xs leading-relaxed">
+          © 2024 Ayucare. All rights reserved.
+        </p>
+        <p class="mt-2 text-gray-400 text-lg max-w-xs leading-relaxed">
+          Designed and developed by
+          <a class="text-teal-400 hover:underline" href="https://prodbizsolutions.com" rel="noopener noreferrer"
+            target="_blank">Prodbizsolutions.com</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

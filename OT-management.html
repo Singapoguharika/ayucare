@@ -377,6 +377,58 @@
    });
   </script>
 <!--nav end-->
+   <style>
+        .card {
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-color: #00629e33; */
+            z-index: 0;
+            transition: top 0.4s ease;
+        }
+
+        .card.clicked h2 {
+            color: white !important;
+        }
+
+        .card.clicked p {
+            color: #333;
+        }
+
+
+        .card:hover::before {
+            top: 0;
+        }
+
+        .card:hover .icon {
+            transform: scale(1.2);
+        }
+
+        .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .card.clicked {
+            /* background-color: #00629e33; */
+            background: rgb(221, 129, 45);
+        }
+    </style>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<!--nav end here-->
 
 
 
@@ -500,7 +552,7 @@ This makes the surgery process smooth, safe, and well-organized for both staff a
 
     <!-- Left: Image -->
     <div class="w-full lg:w-1/2 overflow-hidden rounded-xl shadow-lg">
-      <img src="./images/otmanagement.jpg" alt="OT Management Benefits"
+      <img src="./images/anonymous-coworkers-with-papers.jpg" alt="OT Management Benefits"
            class="w-full h-auto transform transition-transform duration-500 hover:scale-105">
     </div>
 

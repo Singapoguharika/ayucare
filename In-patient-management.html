@@ -1,288 +1,434 @@
 <html lang="en">
-
-<head>
+ <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>
-    AyuCare Hospital Management System
+   AyuCare Hospital Management System
   </title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+   rel="stylesheet"
+  />
   <style>
-    body {
-      font-family: "Crimson Text", serif;
-      background-color: #f7f9fb;
+   body {
+    font-family: "Crimson Text", serif;
+    background-color: #f7f9fb;
+   }
+   nav {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+  }
+   /* Animation for slide-in from left */
+   @keyframes slideInLeft {
+    0% {
+     opacity: 0;
+     transform: translateX(-50px);
     }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      width: 100%;
+    100% {
+     opacity: 1;
+     transform: translateX(0);
     }
-
-    /* Animation for slide-in from left */
-    @keyframes slideInLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
+   }
+   .slide-in-left {
+    animation: slideInLeft 1s ease forwards;
+   }
+   /* Animation for slide-in from right */
+   @keyframes slideInRight {
+    0% {
+     opacity: 0;
+     transform: translateX(50px);
     }
-
-    .slide-in-left {
-      animation: slideInLeft 1s ease forwards;
+    100% {
+     opacity: 1;
+     transform: translateX(0);
     }
-
-    /* Animation for slide-in from right */
-    @keyframes slideInRight {
-      0% {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .slide-in-right {
-      animation: slideInRight 1s ease forwards;
-    }
+   }
+   .slide-in-right {
+    animation: slideInRight 1s ease forwards;
+   }
   </style>
-</head>
-
-<body class="bg-[#f7f9fb]">
+ </head>
+ <body class="bg-[#f7f9fb]">
   <nav class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-[1280px] mx-auto flex items-center justify-between h-20 px-4 sm:px-6 md:px-8">
-      <div
-        class="w-[180px] md:w-[250px] h-16 md:h-20 rounded-md flex items-center justify-center flex-shrink-0 select-none">
-        <img alt="AyuCare Hospital Management System logo with white text on blue background, rectangular shape"
-          class="object-contain h-12 md:h-16" height="60" src="images/logoayucare.png" width="200" />
-      </div>
-      <ul class="hidden md:flex items-center gap-8 text-[20px] text-[#00629e] font-medium select-none relative"
-        id="navLinks">
-        <li>
-          <a class="hover:text-[#1f97dc] transition" href="index">Home</a>
-        </li>
-        <li>
-          <a class="hover:text-[#1f97dc] transition" href="aboutus">About</a>
-        </li>
-        <li class="relative" id="modulesMenu">
-          <button aria-expanded="false" aria-haspopup="true"
-            class="flex items-center gap-1 focus:outline-none text-[#00629e] hover:text-[#1f97dc] transition font-medium"
-            id="desktopDropdownBtn" type="button">
-            Services
-            <i class="fas fa-angle-down"></i>
-          </button>
-          <ul aria-label="submenu"
-            class="absolute top-full left-0 mt-1 bg-[#f7f9fb] shadow-lg rounded-md min-w-[220px] max-w-[350px] whitespace-nowrap hidden z-50"
-            id="modulesDropdown">
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="out-patient-management">Out-Patient Management</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="In-patient-management">In-Patient Management</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="clinicalmanagement">Clinical Management</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="pharmacy">Pharmacy</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="OT-management">OT Management</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="digitalrecord">Digital Records</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="laboratory">Laboratory</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="radiology">Radiology</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
-                href="revenue-analysis">Revenue Analysis</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a class="hover:text-[#1f97dc] transition" href="HMSportal">HMSPortal-App</a>
-        </li>
-
-        <a class="hover:text-[#1f97dc] transition" href="blog">Blogs</a>
-        </li>
-        <li>
-          <a class="hover:text-[#1f97dc] transition" href="testimonals">Testimonials</a>
-        </li>
-        <li>
-          <button onclick="location.href='contactus'"
-            class="bg-[#00629e] hover:bg-[#004a75] text-white px-4 py-2 rounded transition font-medium" type="button">
-            Contact Us
-          </button>
-        </li>
-      </ul>
-      <button aria-label="Toggle menu" class="md:hidden text-[#0b5fa5] text-3xl focus:outline-none" id="hamburgerIcon"
-        type="button">
-        <i class="fas fa-bars"></i>
+   <div
+    class="max-w-[1280px] mx-auto flex items-center justify-between h-20 px-4 sm:px-6 md:px-8"
+   >
+    <div
+     class="w-[180px] md:w-[250px] h-16 md:h-20 rounded-md flex items-center justify-center flex-shrink-0 select-none"
+    >
+     <img
+      alt="AyuCare Hospital Management System logo with white text on blue background, rectangular shape"
+      class="object-contain h-12 md:h-16"
+      height="60"
+      src="images/logoayucare.png"
+      width="200"
+     />
+    </div>
+    <ul
+     class="hidden md:flex items-center gap-8 text-[20px] text-[#00629e] font-medium select-none relative"
+     id="navLinks"
+    >
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="index">Home</a>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="aboutus">About</a>
+     </li>
+     <li class="relative" id="modulesMenu">
+      <button
+       aria-expanded="false"
+       aria-haspopup="true"
+       class="flex items-center gap-1 focus:outline-none text-[#00629e] hover:text-[#1f97dc] transition font-medium"
+       id="desktopDropdownBtn"
+       type="button"
+      >
+       Services
+       <i class="fas fa-angle-down"></i>
       </button>
-    </div>
-    <!-- Mobile menu -->
-    <div class="hidden bg-[#00629e] text-white w-full px-6 pb-6" id="mobileMenu">
-      <ul class="flex flex-col gap-4 text-lg select-none">
-        <li>
-          <a class="block w-full" href="index" tabindex="0">Home</a>
-        </li>
-        <li>
-          <a class="block w-full" href="aboutus" tabindex="0">About</a>
-        </li>
-        <li>
-          <button aria-controls="mobileModulesSubmenu" aria-expanded="false"
-            class="flex justify-between items-center w-full font-medium" id="mobileModulesBtn" type="button">
-            Services
-            <i class="fas fa-angle-down"></i>
-          </button>
-          <ul class="hidden flex flex-col bg-white text-black rounded-md mt-2 overflow-hidden"
-            id="mobileModulesSubmenu">
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
-                href="out-patient-management" tabindex="0">Out-Patient Management</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
-                href="In-patient-management" tabindex="0">In-Patient Management</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition" href="clinicalmanagement"
-                tabindex="0">Clinical Management</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition" href="pharmacy"
-                tabindex="0">Pharmacy</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition" href="OT-management"
-                tabindex="0">OT Management</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition" href="digitalrecord"
-                tabindex="0">Digital Records</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition" href="laboratory"
-                tabindex="0">Laboratory</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition" href="radiology"
-                tabindex="0">Radiology</a>
-            </li>
-            <li>
-              <a class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition" href="revenue-analysis"
-                tabindex="0">Revenue Analysis</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a class="block w-full" href="HMSportal" tabindex="0">HMSPortal-App</a>
-        </li>
-
-        <li>
-          <a class="block w-full" href="blog" tabindex="0">Blogs</a>
-        </li>
-        <li>
-          <a class="block w-full" href="testimonals" tabindex="0">Testimonials</a>
-        </li>
-        <li>
-          <a class="block w-full bg-white text-[#00629e] text-center rounded px-4 py-2 font-medium hover:bg-gray-200 transition"
-            href="contactus" tabindex="0">Contact Us</a>
-        </li>
+      <ul
+       aria-label="submenu"
+       class="absolute top-full left-0 mt-1 bg-[#f7f9fb] shadow-lg rounded-md min-w-[220px] max-w-[350px] whitespace-nowrap hidden z-50"
+       id="modulesDropdown"
+      >
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="out-patient-management"
+         >Out-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="In-patient-management"
+         >In-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="clinicalmanagement"
+         >Clinical Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="pharmacy"
+         >Pharmacy</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="OT-management"
+         >OT Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="digitalrecord"
+         >Digital Records</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="laboratory"
+         >Laboratory</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="radiology"
+         >Radiology</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 text-black hover:bg-[#1f97dc] hover:text-white transition"
+         href="revenue-analysis"
+         >Revenue Analysis</a
+        >
+       </li>
       </ul>
-    </div>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="HMSportal">HMSPortal-App</a>
+     </li>
+   
+      <a class="hover:text-[#1f97dc] transition" href="blog">Blogs</a>
+     </li>
+     <li>
+      <a class="hover:text-[#1f97dc] transition" href="testimonals">Testimonials</a>
+     </li>
+     <li>
+      <button
+       onclick="location.href='contactus'"
+       class="bg-[#00629e] hover:bg-[#004a75] text-white px-4 py-2 rounded transition font-medium"
+       type="button"
+      >
+       Contact Us
+      </button>
+     </li>
+    </ul>
+    <button
+     aria-label="Toggle menu"
+     class="md:hidden text-[#0b5fa5] text-3xl focus:outline-none"
+     id="hamburgerIcon"
+     type="button"
+    >
+     <i class="fas fa-bars"></i>
+    </button>
+   </div>
+   <!-- Mobile menu -->
+   <div
+    class="hidden bg-[#00629e] text-white w-full px-6 pb-6"
+    id="mobileMenu"
+   >
+    <ul class="flex flex-col gap-4 text-lg select-none">
+     <li>
+      <a class="block w-full" href="index" tabindex="0">Home</a>
+     </li>
+     <li>
+      <a class="block w-full" href="aboutus" tabindex="0">About</a>
+     </li>
+     <li>
+      <button
+       aria-controls="mobileModulesSubmenu"
+       aria-expanded="false"
+       class="flex justify-between items-center w-full font-medium"
+       id="mobileModulesBtn"
+       type="button"
+      >
+       Services
+       <i class="fas fa-angle-down"></i>
+      </button>
+      <ul
+       class="hidden flex flex-col bg-white text-black rounded-md mt-2 overflow-hidden"
+       id="mobileModulesSubmenu"
+      >
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="out-patient-management"
+         tabindex="0"
+         >Out-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="In-patient-management"
+         tabindex="0"
+         >In-Patient Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="clinicalmanagement"
+         tabindex="0"
+         >Clinical Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="pharmacy"
+         tabindex="0"
+         >Pharmacy</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="OT-management"
+         tabindex="0"
+         >OT Management</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="digitalrecord"
+         tabindex="0"
+         >Digital Records</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="laboratory"
+         tabindex="0"
+         >Laboratory</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="radiology"
+         tabindex="0"
+         >Radiology</a
+        >
+       </li>
+       <li>
+        <a
+         class="block px-5 py-2 hover:bg-[#00629e] hover:text-white transition"
+         href="revenue-analysis"
+         tabindex="0"
+         >Revenue Analysis</a
+        >
+       </li>
+      </ul>
+     </li>
+     <li>
+      <a class="block w-full" href="HMSportal" tabindex="0">HMSPortal-App</a>
+     </li>
+    
+     <li>
+      <a class="block w-full" href="blog" tabindex="0">Blogs</a>
+     </li>
+     <li>
+      <a class="block w-full" href="testimonals" tabindex="0">Testimonials</a>
+     </li>
+     <li>
+      <a
+       class="block w-full bg-white text-[#00629e] text-center rounded px-4 py-2 font-medium hover:bg-gray-200 transition"
+       href="contactus"
+       tabindex="0"
+       >Contact Us</a
+      >
+     </li>
+    </ul>
+   </div>
   </nav>
   <script>
-    const hamburgerIcon = document.getElementById("hamburgerIcon");
-    const mobileMenu = document.getElementById("mobileMenu");
-    const mobileModulesBtn = document.getElementById("mobileModulesBtn");
-    const mobileModulesSubmenu = document.getElementById("mobileModulesSubmenu");
-    const mobileLinks = mobileMenu.querySelectorAll("a");
+   const hamburgerIcon = document.getElementById("hamburgerIcon");
+   const mobileMenu = document.getElementById("mobileMenu");
+   const mobileModulesBtn = document.getElementById("mobileModulesBtn");
+   const mobileModulesSubmenu = document.getElementById("mobileModulesSubmenu");
+   const mobileLinks = mobileMenu.querySelectorAll("a");
 
-    hamburgerIcon.addEventListener("click", () => {
-      const icon = hamburgerIcon.querySelector("i");
-      mobileMenu.classList.toggle("hidden");
-      icon.classList.toggle("fa-bars");
-      icon.classList.toggle("fa-xmark");
+   hamburgerIcon.addEventListener("click", () => {
+    const icon = hamburgerIcon.querySelector("i");
+    mobileMenu.classList.toggle("hidden");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+   });
+
+   mobileModulesBtn.addEventListener("click", () => {
+    const expanded = mobileModulesBtn.getAttribute("aria-expanded") === "true";
+    mobileModulesBtn.setAttribute("aria-expanded", !expanded);
+    mobileModulesSubmenu.classList.toggle("hidden");
+    mobileModulesBtn.querySelector("i").classList.toggle("fa-angle-down");
+    mobileModulesBtn.querySelector("i").classList.toggle("fa-angle-up");
+   });
+
+   // Close mobile menu when clicking a link and allow navigation
+   mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+     // Close menu and submenu
+     mobileMenu.classList.add("hidden");
+     const icon = hamburgerIcon.querySelector("i");
+     icon.classList.remove("fa-xmark");
+     icon.classList.add("fa-bars");
+     if (!mobileModulesSubmenu.classList.contains("hidden")) {
+      mobileModulesSubmenu.classList.add("hidden");
+      mobileModulesBtn.setAttribute("aria-expanded", false);
+      mobileModulesBtn.querySelector("i").classList.remove("fa-angle-up");
+      mobileModulesBtn.querySelector("i").classList.add("fa-angle-down");
+     }
+     // Navigation will proceed naturally
     });
+   });
 
-    mobileModulesBtn.addEventListener("click", () => {
-      const expanded = mobileModulesBtn.getAttribute("aria-expanded") === "true";
-      mobileModulesBtn.setAttribute("aria-expanded", !expanded);
-      mobileModulesSubmenu.classList.toggle("hidden");
-      mobileModulesBtn.querySelector("i").classList.toggle("fa-angle-down");
-      mobileModulesBtn.querySelector("i").classList.toggle("fa-angle-up");
-    });
+   // Desktop Modules dropdown toggle on click
+   const desktopDropdownBtn = document.getElementById("desktopDropdownBtn");
+   const modulesDropdown = document.getElementById("modulesDropdown");
 
-    // Close mobile menu when clicking a link and allow navigation
-    mobileLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        // Close menu and submenu
-        mobileMenu.classList.add("hidden");
-        const icon = hamburgerIcon.querySelector("i");
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-        if (!mobileModulesSubmenu.classList.contains("hidden")) {
-          mobileModulesSubmenu.classList.add("hidden");
-          mobileModulesBtn.setAttribute("aria-expanded", false);
-          mobileModulesBtn.querySelector("i").classList.remove("fa-angle-up");
-          mobileModulesBtn.querySelector("i").classList.add("fa-angle-down");
-        }
-        // Navigation will proceed naturally
-      });
-    });
+   desktopDropdownBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const isHidden = modulesDropdown.classList.contains("hidden");
+    if (isHidden) {
+     modulesDropdown.classList.remove("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "true");
+    } else {
+     modulesDropdown.classList.add("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "false");
+    }
+   });
 
-    // Desktop Modules dropdown toggle on click
-    const desktopDropdownBtn = document.getElementById("desktopDropdownBtn");
-    const modulesDropdown = document.getElementById("modulesDropdown");
-
-    desktopDropdownBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const isHidden = modulesDropdown.classList.contains("hidden");
-      if (isHidden) {
-        modulesDropdown.classList.remove("hidden");
-        desktopDropdownBtn.setAttribute("aria-expanded", "true");
-      } else {
-        modulesDropdown.classList.add("hidden");
-        desktopDropdownBtn.setAttribute("aria-expanded", "false");
-      }
-    });
-
-    // Close dropdown if clicking outside
-    document.addEventListener("click", (e) => {
-      const target = e.target;
-      if (
-        !desktopDropdownBtn.contains(target) &&
-        !modulesDropdown.contains(target)
-      ) {
-        modulesDropdown.classList.add("hidden");
-        desktopDropdownBtn.setAttribute("aria-expanded", "false");
-      }
-    });
+   // Close dropdown if clicking outside
+   document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (
+     !desktopDropdownBtn.contains(target) &&
+     !modulesDropdown.contains(target)
+    ) {
+     modulesDropdown.classList.add("hidden");
+     desktopDropdownBtn.setAttribute("aria-expanded", "false");
+    }
+   });
   </script>
-  <!--nav end-->
+<!--nav end-->
+   <style>
+        .card {
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-color: #00629e33; */
+            z-index: 0;
+            transition: top 0.4s ease;
+        }
+
+        .card.clicked h2 {
+            color: white !important;
+        }
+
+        .card.clicked p {
+            color: #333;
+        }
+
+
+        .card:hover::before {
+            top: 0;
+        }
+
+        .card:hover .icon {
+            transform: scale(1.2);
+        }
+
+        .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .card.clicked {
+            /* background-color: #00629e33; */
+            background: rgb(221, 129, 45);
+        }
+    </style>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<!--nav end here-->
 
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
@@ -294,7 +440,7 @@
     <!-- OUT-PATIENT BANNER SECTION WITH ANIMATED TITLE -->
     <section class="relative w-full h-[300px] sm:h-[250px] md:h-[280px] lg:h-[350px] overflow-hidden">
       <!-- Background Image -->
-      <img src="./images/outpaitentimg2.png" alt="Out-Patient Management"
+      <img src="images/close-up-nurse-holding-typing-tablet-standing-stomatologic-clinic-while-doctor-is-working-with-patient-background-using-monitor-with-chroma-key-izolated-pc-key-mockup-pc-display.jpg" alt="Out-Patient Management"
         class="w-full h-full object-cover brightness-50">
 
       <!-- Animated Overlay Text -->
@@ -518,7 +664,7 @@
 
         <!-- Left: Illustration -->
         <div class="w-full md:w-1/2 overflow-hidden rounded-lg shadow-md">
-          <img src="./images/inpatient.jpg" alt="In-Patient Scenario"
+          <img src="images/doctor-writing-about-routine-medical-checkup.jpg" alt="In-Patient Scenario"
             class="w-full h-auto transform transition-transform duration-500 hover:scale-105">
         </div>
 
